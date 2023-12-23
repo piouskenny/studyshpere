@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Users\UserAuthController;
+use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// User
+Route::get('/signup', [UserAuthController::class, 'signup'])->name('signup_page');
+Route::post('/signup', [UserAuthController::class, 'create'])->name('signup');
+Route::get('/login', [UserAuthController::class, 'login'])->name('login_page');
+Route::post('/login', [UserAuthController::class, 'check'])->name('login');
+Route::post('/verify_otp', [UserAuthController::class, 'verify_otp'])->name('verify_otp');
+Route::get('verify_otp_page', [UserAuthController::class, 'verify_otp_page'])->name('verify_otp_page');
+
+Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard')->middleware('user_auth');
