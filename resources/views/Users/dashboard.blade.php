@@ -121,7 +121,7 @@
                         </li>
                     </ul>
                     <div class="d-flex justify-content-center">
-                        <a href="#!" class="btn btn-primary link-secondary p-md-1 mb-0 w-75 btn_card">Continue Learning</a>
+                        <a href="#!" class="btn btn-primary link-secondary p-md-1 mb-0 w-75 btn_card">Start Learning</a>
                     </div>
                 </div>
             </div>

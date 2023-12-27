@@ -15,6 +15,19 @@ class UserController extends Controller
     public function Dashboard()
     {
         $user = User::where('id', '=', session('User'))->first();
-        return view('Users.dashboard')->with('user', $user);;
+        return view('Users.dashboard')->with('user', $user);
+    }
+
+
+
+    /**
+     * User Profile Page
+     */
+
+    public function Profile()
+    {
+        $user = User::where('id', '=', session('User'))->first();
+
+        return view('Users.profile')->with('user', $user);
     }
 }

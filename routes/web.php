@@ -29,3 +29,4 @@ Route::get('/logout', [UserAuthController::class, 'logout'])->name('logout')->mi
 
 
 Route::get('/user_dashboard', [UserController::class, 'dashboard'])->name('dashboard')->middleware('user_auth');
+Route::get('/user_profile', [UserController::class, 'profile'])->name('profile')->middleware('user_auth');
