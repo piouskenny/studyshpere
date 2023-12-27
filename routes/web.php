@@ -25,5 +25,7 @@ Route::get('/login', [UserAuthController::class, 'login'])->name('login_page');
 Route::post('/login', [UserAuthController::class, 'check'])->name('login');
 Route::post('/verify_otp', [UserAuthController::class, 'verify_otp'])->name('verify_otp');
 Route::get('verify_otp_page', [UserAuthController::class, 'verify_otp_page'])->name('verify_otp_page');
+Route::get('/logout', [UserAuthController::class, 'logout'])->name('logout')->middleware('user_auth');
 
-Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard')->middleware('user_auth');
+
+Route::get('/user_dashboard', [UserController::class, 'dashboard'])->name('dashboard')->middleware('user_auth');

@@ -52,7 +52,6 @@
                                 </span>
                             </div>
 
-                            <!-- Email input -->
                             <div class="form-outline mb-4">
                                 <input type="email" id="email" name="email" class="form-control" value="{{ @old('email') }}" />
                                 <label class="form-label" for="email">Email address</label>

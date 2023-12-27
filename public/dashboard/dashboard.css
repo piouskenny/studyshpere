@@ -1,0 +1,16 @@
+.card_mobile-space {
+    margin-left: 20px;
+}
+
+.btn_card {
+    height: 30px;
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .card_mobile-space {
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}

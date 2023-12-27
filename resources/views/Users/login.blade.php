@@ -25,19 +25,29 @@
             ">
                     <div class="card-body p-5 shadow-5 text-center">
                         <h2 class="fw-bold mb-5">Login</h2>
-                        <form method="post">
+                        <form method="post" action={{ route('login') }}>
                             @method('POST')
                             @csrf
                             <!-- Phone input -->
                             <div class="form-outline mb-4">
-                                <input type="number" id="form3Example3" class="form-control" />
+                                <input type="number" id="form3Example3" class="form-control" name="phonenumber" />
                                 <label class="form-label" for="form3Example3">Phone Number</label>
+                                <span class="text-danger d-block">
+                                    @error('phone_number')
+                                    {{$message}}
+                                    @enderror
+                                </span>
                             </div>
 
                             <!-- Password input -->
                             <div class="form-outline mb-4">
-                                <input type="password" id="form3Example4" class="form-control" />
+                                <input type="password" id="form3Example4" class="form-control" name="password" />
                                 <label class="form-label" for="form3Example4">Password</label>
+                                <span class="text-danger d-block">
+                                    @error('password')
+                                    {{$message}}
+                                    @enderror
+                                </span>
                             </div>
 
                             <!-- Submit button -->

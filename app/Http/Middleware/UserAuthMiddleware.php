@@ -17,7 +17,7 @@ class UserAuthMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!session()->has('User')) {
-            return redirect(route('user.login'));
+            return redirect(route('login_page'));
         } elseif (session()->has('User')) {
             $user = User::where('id', '=', session('User'))->first();
         }

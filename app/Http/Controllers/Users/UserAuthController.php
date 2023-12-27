@@ -39,7 +39,6 @@ class UserAuthController extends Controller
         return view(
             'Users.verify_otp',
         )->with('user', $user);
-
     }
 
     public function login()
@@ -71,7 +70,36 @@ class UserAuthController extends Controller
         return redirect(route('dashboard'))->with('user', $user);
     }
 
-    public function check(UserAuthRequest $request)
+    public function check(Request $request)
     {
+        $request->validate(
+            [
+                'phonenumber' => 'required|numeric|min:11',
+                'password' => 'required'
+            ]
+        );
+
+        $updated_numnber = ltrim($request->phonenumber, '0');
+
+        $user = User::where('phonenumber', $updated_numnber)->first();
+
+        if ($user) {
+            if (Hash::check($request->password, $user->password,)) {
+                $request->session()->put('User', $user->id);
+                return redirect(route('dashboard'))->with('user', $user);
+            } else {
+                return back()->with('failed', 'wrong Password');
+            }
+        } else {
+            return back()->with("failed", "No account found for $request->email");
+        }
+    }
+
+
+    public function logout()
+    {
+        $userInfo = session()->pull('User');
+        Auth::logout();
+        return redirect(route('login_page'));
     }
 }
