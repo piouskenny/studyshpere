@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('full_name');
             $table->string('email');
             $table->unsignedBigInteger('phonenumber');
-            $table->string('profile_picture');
+            $table->string('profile_picture')->nullable();
             $table->bigInteger('courses')->nullable(); //courses owned in Number
             $table->string('password');
             $table->timestamps();

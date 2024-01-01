@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserAuthRequest;
+use App\Models\Tutor;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -83,6 +84,7 @@ class UserAuthController extends Controller
 
         $user = User::where('phonenumber', $updated_numnber)->first();
 
+
         if ($user) {
             if (Hash::check($request->password, $user->password,)) {
                 $request->session()->put('User', $user->id);
@@ -91,8 +93,17 @@ class UserAuthController extends Controller
                 return back()->with('failed', 'wrong Password');
             }
         } else {
-            return back()->with("failed", "No account found for $request->email");
+            $tutor = Tutor::where('phonenumber', $updated_numnber)->first();
+            if ($tutor) {
+                if (Hash::check($request->password, $tutor->password,)) {
+                    $request->session()->put('Tutor', $tutor->id);
+                    return redirect(route('tutor_dashboard'))->with('user', $user);
+                } else {
+                    return back()->with('failed', 'wrong Password');
+                }
+            }
         }
+        return back()->with("failed", "No account found for $request->email");
     }
 
 

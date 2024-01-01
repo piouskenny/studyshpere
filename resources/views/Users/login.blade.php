@@ -58,7 +58,7 @@
                             <p>Don't have an account? </p>
                             <div class="d-flex justify-content-between ">
                                 <a href="{{ route('signup_page') }}" class="btn btn-primary w-50">Student signup</a>
-                                <a href="{{ route('signup_page') }}" class=" mx-2 btn btn-info w-50 ">Tutor signup</a>
+                                <a href="{{ route('tutor_signup_page') }}" class=" mx-2 btn btn-info w-50 ">Tutor signup</a>
                             </div>
                         </form>
                     </div>

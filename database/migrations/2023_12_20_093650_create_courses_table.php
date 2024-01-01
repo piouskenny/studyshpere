@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('course_name');
             $table->string('course_type');
             $table->bigInteger('tutor')->nullable();
-            $table->bigInteger('students_enrolled');
-            $table->string('course_image');
+            $table->bigInteger('students_enrolled')->nullable();
+            $table->string('course_image')->nullable();
             $table->timestamps();
             $table->foreign('tutor')->references('id')->on('tutors')->onDelete('cascade');
         });
