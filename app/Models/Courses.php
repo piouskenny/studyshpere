@@ -10,12 +10,15 @@ class Courses extends Model
     protected $fillable = [
         'course_name',
         'course_type',
-        'tutor',
+        'tutor_id',
         'students_enrolled',
         'course_image'
     ];
 
-    
+    public function tutor()
+    {
+        return $this->belongsTo(Tutor::class);
+    }
 
     use HasFactory;
 }

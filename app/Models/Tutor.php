@@ -15,5 +15,11 @@ class Tutor extends Model
         'courses',
         'password'
     ];
+
+    public function courses()
+    {
+        return $this->hasMany(Courses::class);
+    }
+
     use HasFactory;
 }

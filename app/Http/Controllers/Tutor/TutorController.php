@@ -12,8 +12,18 @@ class TutorController extends Controller
 {
     public function dashboard()
     {
-        $tutor = Tutor::where('id', '=', session('Tutor'))->first();
-        return view('Tutor.dashboard')->with('tutor', $tutor);
+        $tutor = Tutor::find(session('Tutor'))->first();
+
+        $courses = Courses::where('tutor_id', $tutor->id)->get();
+        $courseCount = $tutor->courses()->count();
+
+        return view(
+            'Tutor.dashboard',
+            [
+                'course' => $courseCount,
+                'courses' => $courses,
+            ]
+        )->with('tutor', $tutor);
     }
 
 
@@ -24,6 +34,9 @@ class TutorController extends Controller
     }
 
 
+    /**
+     * Course Creation method
+     */
     public function storeCourse(Request $request)
     {
         $request->validate([
@@ -33,20 +46,17 @@ class TutorController extends Controller
             'course_image' => 'required|mimes:png,jpg,jpeg|max:3072'
         ]);
 
-        dd($request->course_image->extension());
-
-
         $course_image_name = time() . '-' . $request->course_name . '.' . $request->course_image->extension();
 
         $request->course_image->move(public_path('course_img'), $course_image_name);
 
-        Courses::create([
+        $course = Courses::create([
             'course_name' => $request->course_name,
             'course_type' => $request->course_type,
-            'tutor' => $request->tutor,
+            'tutor_id' => $request->tutor,
             'course_image' => $course_image_name
         ]);
 
-        // dd($request->all());
+        return redirect(route('tutor_dashboard'))->with('success', 'course created successfully');
     }
 }
