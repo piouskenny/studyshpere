@@ -15,11 +15,9 @@ class CourseEnrollmentService
             ->where('user_id', $student_id)
             ->get();
 
-        if ($status == false) {
+        if ($status->count() > 0) {
             return redirect(route('dashboard'))->with('success', 'user already enrolled for this course'); // Or return $data = 'user already enrolled';
         }
-
-
 
         /**
          * Enroll student by creating an enrollment table
@@ -35,6 +33,7 @@ class CourseEnrollmentService
         }
 
 
-        return $data = "Succcess";
+        return redirect(route('dashboard'))->with('success', 'user already enrolled for this course'); // Or return $data = 'user already enrolled';
+
     }
 }

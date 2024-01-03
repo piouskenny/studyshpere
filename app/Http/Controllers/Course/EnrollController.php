@@ -24,6 +24,8 @@ class EnrollController extends Controller
         $enrollmentService = new CourseEnrollmentService();
         $enroll = $enrollmentService->enrollStudent($course_id, $tutor_id, $user->id);
 
-        return dd($enroll);
+        if ($enroll == 'Success') {
+            return redirect(route('dashboard'))->with('success', 'Course Enrollment Successful');
+        }
     }
 }
