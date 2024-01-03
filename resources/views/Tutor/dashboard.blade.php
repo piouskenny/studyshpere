@@ -37,6 +37,11 @@
                         </li>
                     </ul>
                 </div>
+
+
+                <a class="btn btn-primary">
+                    View Course
+                </a>
             </div>
             @empty
             <div class="flex justify-content-center">

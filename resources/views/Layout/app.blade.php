@@ -27,6 +27,7 @@
 
     <!-- Template Main CSS File -->
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset('dashboard/dashboard.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -41,9 +42,9 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="{{ route('home') }}">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">Courses</a></li>
-                    <li><a class="nav-link scrollto" href="{{ route('login_page') }}">Dashboard</a></li>
+                    <li><a class="nav-link scrollto {{ $_SERVER['REQUEST_URI'] == '/' ? 'active' : ''  }}" href="{{ route('home') }}">Home</a></li>
+                    <li><a class="nav-link scrollto {{ $_SERVER['REQUEST_URI'] == '/courses' ? 'active' : ''  }}" href="{{ route('courses') }}">Courses</a></li>
+                    <li><a class="nav-link scrollto  {{ $_SERVER['REQUEST_URI'] == '/login' ? 'active' : ''  }}"" href=" {{ route('login_page') }}">Dashboard</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
