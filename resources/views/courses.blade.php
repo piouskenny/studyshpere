@@ -1,6 +1,5 @@
 @extends('Layout.app')
 @section('content')
-<!-- ======= Hero Section ======= -->
 <section id="hero">
     <div class="container">
         <div class="row justify-content-between">
@@ -21,11 +20,11 @@
     <section id="about" class="about container">
         <div class="container-fluid">
 
-            <div class="row  justify-content-center">
+            <div class="row p-1">
                 <h2>Courses</h2>
 
                 @forelse($courses as $course)
-                <div class="card col-md-3 my-2 mx-4">
+                <div class="card col-md-4 my-2 pb-2">
                     <div class="bg-image hover-overlay ripple course_card flex justify-content-center" data-mdb-ripple-color="light">
                         <img src="{{ asset('course_img/' . $course->course_image) }}" class="img-fluid course_img" />
                     </div>
@@ -38,15 +37,15 @@
                         </ul>
                     </div>
 
-                    <button class="btn btn-primary">
+                    <a href="{{route('singleCourses',$course->id)}}" class="btn btn-primary">
                         Enroll
-                    </button>
+                    </a>
                 </div>
 
                 @empty
                 <div class="flex justify-content-center">
                     <div class="alert alert-danger text-center">
-                        You've not added any course yet
+                        No Course Available yet
                     </div>
                 </div>
 

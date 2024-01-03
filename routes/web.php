@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Course\EnrollController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Tutor\TutorAuthController;
 use App\Http\Controllers\Tutor\TutorController;
@@ -11,7 +12,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/courses', [HomeController::class, 'courses'])->name('courses');
+Route::get('/courses/{id}', [HomeController::class, 'singleCourse'])->name('singleCourses');
 
+
+
+/**
+ * Enrollment Endpoint
+ */
+
+Route::post('/enroll/{course_id}', EnrollController::class)->name('enroll');
 
 /** 
  *  User Auth and Dashboard Controller

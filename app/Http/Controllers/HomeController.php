@@ -23,4 +23,13 @@ class HomeController extends Controller
             ]
         );
     }
+
+    public function singleCourse($id)
+    {
+        $course = Courses::find($id);
+
+        return view(
+            'course'
+        )->with('course', $course);
+    }
 }
