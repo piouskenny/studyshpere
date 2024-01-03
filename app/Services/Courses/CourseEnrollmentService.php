@@ -1,30 +1,40 @@
 <?php
 
-namespace App\Http\Services\Courses;
+namespace App\Services\Courses;
+
+use App\Models\CourseEnrollment;
 
 class CourseEnrollmentService
 {
     public function enrollStudent($course_id, $tutor_id, $student_id)
     {
-        $data  = [
-            'Course ID' => $course_id,
-            'Tutor ID' => $tutor_id,
-            'Studnet ID' => $student_id
-        ];
-
-        return $data;
         /**
          * Check if User already enrolled
          */
+        $status = CourseEnrollment::where('course_id', $course_id)
+            ->where('user_id', $student_id)
+            ->get();
 
-        //  Logic Here
+        if ($status == false) {
+            return redirect(route('dashboard'))->with('success', 'user already enrolled for this course'); // Or return $data = 'user already enrolled';
+        }
+
+
 
         /**
          * Enroll student by creating an enrollment table
          */
+        $enroll = CourseEnrollment::create([
+            'course_id' => $course_id,
+            'tutor_id' => $tutor_id,
+            'user_id' => $student_id
+        ]);
 
-        //Logic Here too
+        if (!$enroll) {
+            return $data = 'Falied';
+        }
 
-        // return Success Response Here
+
+        return $data = "Succcess";
     }
 }

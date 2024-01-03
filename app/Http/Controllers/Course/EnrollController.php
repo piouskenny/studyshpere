@@ -7,7 +7,7 @@ use App\Models\CourseEnrollment;
 use App\Models\Courses;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Services\Courses\CourseEnrollmentService;
+use App\Services\Courses\CourseEnrollmentService;
 
 class EnrollController extends Controller
 {
