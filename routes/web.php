@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Course\EnrollController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Tutor\TutorAuthController;
@@ -9,6 +10,10 @@ use App\Http\Controllers\Users\UserAuthController;
 use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
 
+
+/**
+ * I SHOULD HAVE USED GROUPED ROUTE INSTEAD
+ */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/courses', [HomeController::class, 'courses'])->name('courses');
@@ -53,3 +58,4 @@ Route::get('/admin_signup', [AdminAuthController::class, 'signup'])->name('admin
 Route::get('/admin_login', [AdminAuthController::class, 'login'])->name('admin_login');
 Route::post('/admin_signup', [AdminAuthController::class, 'store'])->name('admin_signup_func');
 Route::post('/admin_login', [AdminAuthController::class, 'store'])->name('admin_login_func');
+Route::get('/admin_dashboard', [AdminController::class, 'dashboard'])->name('')->middleware('admin_auth');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Admin;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +16,12 @@ class AdminAuthMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if (!session()->has('Admin')) {
+            return redirect(route('login_page'));
+        } elseif (session()->has('Admin')) {
+            $admin = Admin::where('id', '=', session('Admin'))->first();
+        }
+
         return $next($request);
     }
 }
