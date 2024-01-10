@@ -13,7 +13,6 @@ class UserController extends Controller
     /**
      * User Dashboard page Controller
      */
-
     public function Dashboard()
     {
         $user_id = session('User');
@@ -41,7 +40,6 @@ class UserController extends Controller
     /**
      * User Profile Page
      */
-
     public function Profile()
     {
         $user = User::where('id', '=', session('User'))->first();

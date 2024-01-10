@@ -20,27 +20,26 @@
 
         <div class="row justify-content-start">
             <h2>Enrolled Courses</h2>
-            @forelse ($courses as $course )
-            <div class="card col-md-4  my-2">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Food/8-col/img (5).jpg" class="img-fluid" />
-                    <a href="#!">
-                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                    </a>
+            @forelse($courses as $course)
+            <div class="card col-md-4 my-2 pb-2">
+                <div class="bg-image hover-overlay ripple course_card flex justify-content-center" data-mdb-ripple-color="light">
+                    <img src="{{ asset('course_img/' . $course->course_image) }}" class="img-fluid course_img" />
                 </div>
                 <div class="card-body">
                     <h5 class="card-title font-weight-bold"><a>{{ $course->course_name }}</a></h5>
-                    <ul class="list-unstyled list-inline mb-0">
-                        <li class="list-inline-item">
-                            <p class="text-muted">4.5 (413)</p>
-                        </li>
-                    </ul>
-                    <div class="d-flex justify-content-center">
-                        <a href="#!" class="btn btn-primary link-secondary p-md-1 mb-0 w-75 btn_card">Continue Learning</a>
-                    </div>
+                </div>
+
+                <a href="{{route('singleCourses',$course->id)}}" class="btn btn-primary">
+                    Learn
+                </a>
+            </div>
+
+            @empty
+            <div class="flex justify-content-center">
+                <div class="alert alert-danger text-center rounded rounded-4">
+                    You have not enrolled for any course yet
                 </div>
             </div>
-            @empty
 
             @endforelse
 

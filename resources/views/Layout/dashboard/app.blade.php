@@ -37,11 +37,10 @@
                 </div>
                 <div>
                     <a class="navbar-brand brand-logo" href="index.html">
-                        <!-- <img src="images/logo.svg" alt="logo" /> -->
                         StudyShere
                     </a>
                     <a class="navbar-brand brand-logo-mini" href="index.html">
-                        <img src="images/logo-mini.svg" alt="logo" />
+                        Ss
                     </a>
                 </div>
             </div>
@@ -128,13 +127,6 @@
                             <span class="menu-title">Profile</span>
                         </a>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-                            <i class="menu-icon mdi mdi-chart-line"></i>
-                            <span class="menu-title">Courses</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                             <i class="menu-icon mdi mdi-card-text-outline"></i>
@@ -147,6 +139,13 @@
                             <i class="menu-icon mdi mdi-table"></i>
                             <span class="menu-title">Settings</span>
                             <i class="menu-arrow"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('courses')}}">
+                            <i class="menu-icon mdi mdi-table"></i>
+                            <span class="menu-title">More Courses</span>
                         </a>
                     </li>
                     <li class="nav-item">
