@@ -15,8 +15,8 @@ class CourseEnrollmentService
             ->where('user_id', $student_id)
             ->get();
 
-        if ($status->count() > 0) {
-            return redirect(route('dashboard'))->with('success', 'user already enrolled for this course'); // Or return $data = 'user already enrolled';
+        if ($status->count() > 1) {
+            return false;
         }
 
         /**
@@ -29,11 +29,9 @@ class CourseEnrollmentService
         ]);
 
         if (!$enroll) {
-            return $data = 'Falied';
+            return back()->with('failed', 'unable to enroll for course contact the adminF');
         }
 
-
-        return redirect(route('dashboard'))->with('success', 'user already enrolled for this course'); // Or return $data = 'user already enrolled';
-
+        return true;
     }
 }

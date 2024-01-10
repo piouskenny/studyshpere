@@ -22,10 +22,12 @@ class EnrollController extends Controller
         }
 
         $enrollmentService = new CourseEnrollmentService();
-        $enroll = $enrollmentService->enrollStudent($course_id, $tutor_id, $user->id);
+        $status = $enrollmentService->enrollStudent($course_id, $tutor_id, $user->id);
 
-        if ($enroll == 'Success') {
-            return redirect(route('dashboard'))->with('success', 'Course Enrollment Successful');
+        if ($status == false) {
+            return back()->with('failed', 'You have already enrolled for this course ');
+        } elseif ($status == true) {
+            return redirect(route('dashboard'))->with('success', 'Course Enrollment was Succesful');
         }
     }
 }

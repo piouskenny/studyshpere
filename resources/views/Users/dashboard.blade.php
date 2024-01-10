@@ -3,7 +3,9 @@
 @section('content')
 <div class="main-panel">
     <div class="content-wrapper bg-light">
-
+        <div class="my-2F">
+            @include('components.alert')
+        </div>
         <div class="row mb-5">
             <div class="col-md-4 shadow-sm p-5 text-center card_mobile-space">
                 <h2>Enrolled Courses</h2>

@@ -20,8 +20,12 @@
     <section id="about" class="about container">
         <div class="container-fluid">
 
+            @include('components.alert')
+
             <div class="row  justify-content-center mb-5">
                 <h2>Course Detail</h2>
+
+
 
                 <div class="col-md-6">
                     <img src="{{ asset('course_img/' . $course->course_image) }}" class="img-fluid course_img rounded" />
