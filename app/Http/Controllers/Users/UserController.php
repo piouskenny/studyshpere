@@ -18,10 +18,21 @@ class UserController extends Controller
     {
         $user_id = session('User');
         $user = User::where('id', '=', $user_id)->first();
-        $courses_enrolled = CourseEnrollment::where('user_id', $user_id)->count();
+        $courses_enrollment = CourseEnrollment::where('user_id', $user_id)->get();
+        $courses = [];
+
+        foreach ($courses_enrollment as $course) {
+            $courseModel = Courses::where('id', $course->course_id)->first();
+            if ($courseModel) {
+                $courses[] = $courseModel;
+            }
+        }
+
+        $courses_enrolled = count($courses);
 
         return view('Users.dashboard', [
             'courses_enrolled' => $courses_enrolled,
+            'courses' => $courses,
         ])->with('user', $user);
     }
 
