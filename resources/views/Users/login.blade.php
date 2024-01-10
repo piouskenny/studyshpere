@@ -24,6 +24,7 @@
             backdrop-filter: blur(30px);
             ">
                     <div class="card-body p-5 shadow-5 text-center">
+                      @include('components.alert')
                         <h2 class="fw-bold mb-5">Login</h2>
                         <form method="post" action={{ route('login') }}>
                             @method('POST')

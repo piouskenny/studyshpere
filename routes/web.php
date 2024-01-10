@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Course\EnrollController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Tutor\TutorAuthController;
@@ -9,7 +10,6 @@ use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
 
 
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/courses', [HomeController::class, 'courses'])->name('courses');
 Route::get('/courses/{id}', [HomeController::class, 'singleCourse'])->name('singleCourses');
@@ -17,15 +17,13 @@ Route::get('/courses/{id}', [HomeController::class, 'singleCourse'])->name('sing
 
 
 /**
- * Enrollment Endpoint
+ * Course Enrollment Endpoint
  */
-
 Route::post('/enroll/{course_id}', EnrollController::class)->name('enroll');
 
 /** 
  *  User Auth and Dashboard Controller
  */
-
 Route::get('/signup', [UserAuthController::class, 'signup'])->name('signup_page');
 Route::post('/signup', [UserAuthController::class, 'create'])->name('signup');
 Route::get('/login', [UserAuthController::class, 'login'])->name('login_page');
@@ -33,8 +31,6 @@ Route::post('/login', [UserAuthController::class, 'check'])->name('login');
 Route::post('/verify_otp', [UserAuthController::class, 'verify_otp'])->name('verify_otp');
 Route::get('verify_otp_page', [UserAuthController::class, 'verify_otp_page'])->name('verify_otp_page');
 Route::get('/logout', [UserAuthController::class, 'logout'])->name('logout')->middleware('user_auth');
-
-
 Route::get('/user_dashboard', [UserController::class, 'dashboard'])->name('dashboard')->middleware('user_auth');
 Route::get('/user_profile', [UserController::class, 'profile'])->name('profile')->middleware('user_auth');
 
@@ -42,7 +38,6 @@ Route::get('/user_profile', [UserController::class, 'profile'])->name('profile')
 /** 
  *  Tutor Auth and Dashboard Controller
  */
-
 Route::get('/tutor_signup', [TutorAuthController::class, 'signup'])->name('tutor_signup_page');
 Route::post('/tutor_signup', [TutorAuthController::class, 'create'])->name('tutor_sigup');
 
@@ -54,3 +49,7 @@ Route::post('/tutor_storeCourse', [TutorController::class, 'storeCourse'])->name
 /** 
  *  Admin Auth and Dashboard Controller
  */
+Route::get('/admin_signup', [AdminAuthController::class, 'signup'])->name('admin_signup');
+Route::get('/admin_login', [AdminAuthController::class, 'login'])->name('admin_login');
+Route::post('/admin_signup', [AdminAuthController::class, 'store'])->name('admin_signup_func');
+Route::post('/admin_login', [AdminAuthController::class, 'store'])->name('admin_login_func');

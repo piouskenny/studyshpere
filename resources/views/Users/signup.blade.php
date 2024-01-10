@@ -24,6 +24,8 @@
             backdrop-filter: blur(30px);
             ">
                     <div class="card-body p-5 shadow-5 text-center">
+                        @include('components.alert')
+
                         <h2 class="fw-bold mb-5">Sign up now</h2>
                         <form action="{{ route('signup') }}" method="post">
                             @method('POST')
@@ -31,7 +33,7 @@
                             <div class="row">
                                 <div class="mb-4">
                                     <div class="form-outline">
-                                        <input type="text" id="fullName" class="form-control" name="full_name" value="{{ @old('full_name') }}"/>
+                                        <input type="text" id="fullName" class="form-control" name="full_name" value="{{ @old('full_name') }}" />
                                         <label class="form-label" for="fullName">Full Name</label>
                                         <span class="text-danger d-block">
                                             @error('full_name')
@@ -93,11 +95,11 @@
                     </div>
                 </div>
             </div>
-{{-- 
+            {{--
             <div class="col-lg-6 mb-5 mb-lg-0">
                 <img src="{{ asset('assets/img/studyshere.jpg') }}" class="w-100 rounded-4 shadow-4" alt="" />
-            </div> --}}
-        </div>
+        </div> --}}
+    </div>
     </div>
     <!-- Jumbotron -->
 </section>
