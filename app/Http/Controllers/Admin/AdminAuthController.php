@@ -33,9 +33,8 @@ class AdminAuthController extends Controller
             'password' => $request->password
         ]);
 
-        return view(route('admin_login'));
+        return view('Admin.login')->with('success', 'Admin Created Successfully');
     }
-
 
 
     /**
