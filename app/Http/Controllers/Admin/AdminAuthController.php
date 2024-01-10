@@ -30,7 +30,7 @@ class AdminAuthController extends Controller
             'full_name' => $request->full_name,
             'email' => $request->email,
             'phonenumber' => $request->phonenumber,
-            'password' => $request->password
+            'password' => Hash::make($request->password)
         ]);
 
         return view('Admin.login')->with('success', 'Admin Created Successfully');
@@ -69,6 +69,6 @@ class AdminAuthController extends Controller
             }
         }
 
-        return back()->with("failed", "No account found for $request->email");
+        return back()->with("failed", "No account found for $request->phonenumber");
     }
 }

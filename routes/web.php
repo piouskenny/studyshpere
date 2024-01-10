@@ -57,5 +57,5 @@ Route::post('/tutor_storeCourse', [TutorController::class, 'storeCourse'])->name
 Route::get('/admin_signup', [AdminAuthController::class, 'signup'])->name('admin_signup');
 Route::get('/admin_login', [AdminAuthController::class, 'login'])->name('admin_login');
 Route::post('/admin_signup', [AdminAuthController::class, 'store'])->name('admin_signup_func');
-Route::post('/admin_login', [AdminAuthController::class, 'store'])->name('admin_login_func');
-Route::get('/admin_dashboard', [AdminController::class, 'dashboard'])->name('')->middleware('admin_auth');
+Route::post('/admin_login', [AdminAuthController::class, 'check'])->name('admin_login_func');
+Route::get('/admin_dashboard', [AdminController::class, 'dashboard'])->name('admin_dashboard')->middleware('admin_auth');

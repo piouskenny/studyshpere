@@ -8,11 +8,12 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function dashbboard() {
-        $admin = Admin::find(session('Tutor'))->first();
+    public function dashboard() {
+        $admin = Admin::find(session('Admin'))->first();
 
         return view(
             'Admin.dashboard',
         )->with('admin', $admin);
     }
+    
 }

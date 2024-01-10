@@ -25,8 +25,8 @@
             ">
                     <div class="card-body p-5 shadow-5 text-center">
                         @include('components.alert')
-                        <h2 class="fw-bold mb-5">Login</h2>
-                        <form method="post" action={{ route('admin_signup_func') }}>
+                        <h2 class="fw-bold mb-5">Admin Login</h2>
+                        <form method="post" action={{ route('admin_login_func') }}>
                             @method('POST')
                             @csrf
                             <!-- Phone input -->
@@ -34,7 +34,7 @@
                                 <input type="number" id="form3Example3" class="form-control" name="phonenumber" />
                                 <label class="form-label" for="form3Example3">Phone Number</label>
                                 <span class="text-danger d-block">
-                                    @error('phone_number')
+                                    @error('phonenumber')
                                     {{$message}}
                                     @enderror
                                 </span>

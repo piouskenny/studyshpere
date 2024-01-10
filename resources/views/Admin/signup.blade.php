@@ -27,7 +27,7 @@
                         @include('components.alert')
 
                         <h2 class="fw-bold mb-5">Admin Signup</h2>
-                        <form action="{{ route('admin_login_func') }}" method="post">
+                        <form action="{{ route('admin_signup_func') }}" method="post">
                             @method('POST')
                             @csrf
                             <div class="row">
