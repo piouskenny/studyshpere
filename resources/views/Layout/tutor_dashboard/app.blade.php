@@ -143,7 +143,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                             <i class="menu-icon mdi mdi-card-text-outline"></i>
-                            <span class="menu-title">Questions & Answers</span>
+                            <span class="menu-title">Assement</span>
                             <i class="menu-arrow"></i>
                         </a>
                     </li>

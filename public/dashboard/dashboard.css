@@ -9,15 +9,15 @@
 
 .course_img {
     width: 100%;
-    height: 100%;
+    height: 150px;
     object-fit: cover;
     object-position: center;
     align-items: center;
 }
 
 .course_card {
-    width: 100%;
-    height: 300px;
+    /* width: 100%;
+    height: 300px; */
 }
 
 @media only screen and (max-width: 600px) {
