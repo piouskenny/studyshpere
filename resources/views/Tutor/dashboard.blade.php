@@ -10,12 +10,12 @@
 
             </div>
 
-            <div class="col-md-3 shadow-sm p-4 text-center  card_mobile-space">
+            <div class="col-md-3 shadow-sm p-4 text-center  card_mobile-space bg-success">
                 <h2>Student Enrolled</h2>
                 <h1> 0 </h1>
             </div>
 
-            <div class="col-md-3 shadow-sm p-4 text-center  card_mobile-space">
+            <div class="col-md-3 shadow-sm p-4 text-center  card_mobile-space bg-warning">
                 <h2>Average Grade</h2>
                 <h1> 0 </h1>
             </div>

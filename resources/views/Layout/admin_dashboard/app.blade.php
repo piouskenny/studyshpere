@@ -6,21 +6,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>StudyShpere </title>
-    <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('dashboard/vendors/feather/feather.css') }}">
     <link rel="stylesheet" href="{{ asset('dashboard/vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dashboard/vendors/ti-icons/css/themify-icons.css') }}">
     <link rel="stylesheet" href="{{asset('dashboard/vendors/typicons/typicons.css')}} ">
     <link rel="stylesheet" href="{{ asset('dashboard/vendors/simple-line-icons/css/simple-line-icons.css') }} ">
     <link rel="stylesheet" href="{{ asset('dashboard/vendors/css/vendor.bundle.base.css') }}">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
+
     <link rel="stylesheet" href="{{ asset('dashboard/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
     <link rel="stylesheet" href="{{ asset('dashboard/js/select.dataTables.min.css') }}">
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('dashboard/vertical-layout-light/style.css') }}">
-    {{-- Main CSS --}}
+
 
     <link rel="stylesheet" href="{{ asset('dashboard/dashboard.css') }}">
 </head>
@@ -38,17 +34,17 @@
                 <div>
                     <a class="navbar-brand brand-logo" href="index.html">
                         <!-- <img src="images/logo.svg" alt="logo" /> -->
-                        StudyShere
+                        StudyShere Admin
                     </a>
                     <a class="navbar-brand brand-logo-mini" href="index.html">
-                        <img src="images/logo-mini.svg" alt="logo" />
+                        Admin
                     </a>
                 </div>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-top">
                 <ul class="navbar-nav">
                     <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                        <h1 class="welcome-text">Welcome, <span class="text-black fw-bold">{{ $tutor->full_name }}</span></h1>
+                        <h1 class="welcome-text">Welcome, <span class="text-black fw-bold">{{ $admin->full_name }}</span></h1>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
@@ -117,7 +113,7 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('tutor_dashboard') }}">
+                        <a class="nav-link" href="">
                             <i class="mdi mdi-grid-large menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
@@ -129,15 +125,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('tutor_createCourse')}}" aria-expanded="false" aria-controls="charts">
-                            <i class="menu-icon mdi mdi-chart-line"></i>
-                            <span class="menu-title">Add Course</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="" aria-expanded="false" aria-controls="charts">
                             <i class="menu-icon mdi mdi-chart-line"></i>
-                            <span class="menu-title">Students</span>
+                            <span class="menu-title">Add Course</span>
                         </a>
                     </li>
                     <li class="nav-item">

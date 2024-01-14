@@ -7,14 +7,19 @@
             @include('components.alert')
         </div>
         <div class="row mb-5">
-            <div class="col-md-4 shadow-sm p-5 text-center card_mobile-space">
+            <div class="col-md-3 shadow-sm p-5 text-center card_mobile-space">
                 <h2>Enrolled Courses</h2>
                 <h1> {{ $courses_enrolled }}</h1>
             </div>
 
-            <div class="col-md-4 shadow-sm p-5 text-center  card_mobile-space">
+            <div class="col-md-3 shadow-sm p-5 text-center  card_mobile-space">
                 <h2>Completed Courses</h2>
                 <h1> 0 </h1>
+            </div>
+
+            <div class="col-md-3 shadow-sm p-5 text-center  card_mobile-space">
+                <h2>Pending Courses</h2>
+                <h1> 3 </h1>
             </div>
         </div>
 
