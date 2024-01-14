@@ -4,18 +4,18 @@
     <div class="content-wrapper bg-light">
 
         <div class="row mb-5">
-            <div class="col-md-3 shadow-sm p-4 text-center card_mobile-space">
+            <div class="col-md-3 shadow-sm p-4 text-center card_mobile-space rounded rounded-md">
                 <h2>Courses</h2>
                 <h1>{{$course}}</h1>
 
             </div>
 
-            <div class="col-md-3 shadow-sm p-4 text-center  card_mobile-space bg-success">
+            <div class="col-md-3 shadow-sm p-4 text-center  card_mobile-space rounded rounded-md bg-success text-light">
                 <h2>Student Enrolled</h2>
                 <h1> 0 </h1>
             </div>
 
-            <div class="col-md-3 shadow-sm p-4 text-center  card_mobile-space bg-warning">
+            <div class="col-md-3 shadow-sm p-4 text-center  card_mobile-space rounded rounded-md bg-warning text-white">
                 <h2>Average Grade</h2>
                 <h1> 0 </h1>
             </div>
