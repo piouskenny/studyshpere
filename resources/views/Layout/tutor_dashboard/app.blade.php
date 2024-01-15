@@ -135,7 +135,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" aria-expanded="false" aria-controls="charts">
+                        <a class="nav-link" href="{{ route('tutor_students') }}" aria-expanded="false" aria-controls="charts">
                             <i class="menu-icon mdi mdi-chart-line"></i>
                             <span class="menu-title">Students</span>
                         </a>

@@ -13,8 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 /**
  * I SHOULD HAVE USED GROUPED ROUTE INSTEAD
- */
-
+*/
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/courses', [HomeController::class, 'courses'])->name('courses');
 Route::get('/courses/{id}', [HomeController::class, 'singleCourse'])->name('singleCourses');
@@ -36,8 +35,8 @@ Route::post('/login', [UserAuthController::class, 'check'])->name('login');
 Route::post('/verify_otp', [UserAuthController::class, 'verify_otp'])->name('verify_otp');
 Route::get('verify_otp_page', [UserAuthController::class, 'verify_otp_page'])->name('verify_otp_page');
 Route::get('/logout', [UserAuthController::class, 'logout'])->name('logout')->middleware('user_auth');
-Route::get('/user_dashboard', [UserController::class, 'dashboard'])->name('dashboard')->middleware('user_auth');
-Route::get('/user_profile', [UserController::class, 'profile'])->name('profile')->middleware('user_auth');
+Route::get('/user/dashboard', [UserController::class, 'dashboard'])->name('dashboard')->middleware('user_auth');
+Route::get('/user/profile', [UserController::class, 'profile'])->name('profile')->middleware('user_auth');
 
 
 /** 
@@ -49,7 +48,7 @@ Route::post('/tutor_signup', [TutorAuthController::class, 'create'])->name('tuto
 Route::get('/tutor_dashboard', [TutorController::class, 'dashboard'])->name('tutor_dashboard')->middleware('tutor_auth');
 Route::get('/tutor_createCourse', [TutorController::class, 'createCourse'])->name('tutor_createCourse')->middleware('tutor_auth');
 Route::post('/tutor_storeCourse', [TutorController::class, 'storeCourse'])->name('tutor_storeCourse')->middleware('tutor_auth');
-
+Route::get('tutor/students', [TutorController::class, 'students'])->name('tutor_students')->middleware('tutor_auth');
 
 /** 
  *  Admin Auth and Dashboard Controller

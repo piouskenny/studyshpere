@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Tutor;
 
 use App\Http\Controllers\Controller;
+use App\Models\CourseEnrollment;
 use App\Models\Courses;
 use App\Models\Tutor;
+use App\Models\User;
 use Illuminate\Http\Request;
 use tidy;
 
@@ -58,5 +60,36 @@ class TutorController extends Controller
         ]);
 
         return redirect(route('tutor_dashboard'))->with('success', 'course created successfully');
+    }
+
+
+    /**
+     * See List of student that enrolled for your course
+    */
+    public function students()
+    {
+        $tutor_id =  session('Tutor');
+        $tutor = Tutor::where('id', $tutor_id)->first();
+
+        $courses_enrollment_list = CourseEnrollment::where('tutor_id', $tutor_id)->get();
+
+        $students = [];
+
+        /**
+         * Get all the students data that has enrolled for your course
+         */
+        foreach ($courses_enrollment_list as $student) {
+            $studentModel = User::where('id', $student->user_id)->first();
+            if ($studentModel) {
+                $students[] = $studentModel;
+            }
+        }
+
+        return view(
+            'Tutor.students',
+            [
+                'students' => $students,
+            ]
+        )->with('tutor', $tutor);
     }
 }
