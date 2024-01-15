@@ -3,7 +3,7 @@
 @section('content')
 <div class="main-panel">
     <div class="content-wrapper bg-light">
-        <div class="my-2F">
+        <div class="my-2">
             @include('components.alert')
         </div>
         <div class="row mb-5">

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 /**
  * I SHOULD HAVE USED GROUPED ROUTE INSTEAD
-*/
+ */
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/courses', [HomeController::class, 'courses'])->name('courses');
 Route::get('/courses/{id}', [HomeController::class, 'singleCourse'])->name('singleCourses');
@@ -53,8 +53,10 @@ Route::get('tutor/students', [TutorController::class, 'students'])->name('tutor_
 /** 
  *  Admin Auth and Dashboard Controller
  */
-Route::get('/admin_signup', [AdminAuthController::class, 'signup'])->name('admin_signup');
-Route::get('/admin_login', [AdminAuthController::class, 'login'])->name('admin_login');
+Route::get('/admin/signup', [AdminAuthController::class, 'signup'])->name('admin_signup');
+Route::get('/admin/login', [AdminAuthController::class, 'login'])->name('admin_login');
 Route::post('/admin_signup', [AdminAuthController::class, 'store'])->name('admin_signup_func');
 Route::post('/admin_login', [AdminAuthController::class, 'check'])->name('admin_login_func');
-Route::get('/admin_dashboard', [AdminController::class, 'dashboard'])->name('admin_dashboard')->middleware('admin_auth');
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin_dashboard')->middleware('admin_auth');
+Route::get('/admin/addTutor', [AdminController::class, 'add_tutor'])->name('admin_addTutor')->middleware('admin_auth');
+Route::post('/admin/addTutor', [AdminController::class, 'save_tutor'])->name('admin_saveTutor')->middleware('admin_auth');
