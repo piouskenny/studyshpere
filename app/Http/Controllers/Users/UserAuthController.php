@@ -94,12 +94,11 @@ class UserAuthController extends Controller
             }
         } else {
             $tutor = Tutor::where('phonenumber', $updated_numnber)->first();
-
-            
             if ($tutor) {
                 if (Hash::check($request->password, $tutor->password,)) {
                     $request->session()->put('Tutor', $tutor->id);
-                    return redirect(route('tutor_dashboard'))->with('user', $user);
+
+                    return redirect(route('tutor_dashboard'))->with('tutor', $tutor);
                 } else {
                     return back()->with('failed', 'wrong Password');
                 }

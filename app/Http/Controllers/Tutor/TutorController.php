@@ -7,6 +7,7 @@ use App\Models\CourseEnrollment;
 use App\Models\Courses;
 use App\Models\Tutor;
 use App\Models\User;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use tidy;
 
@@ -14,10 +15,13 @@ class TutorController extends Controller
 {
     public function dashboard()
     {
-        $tutor = Tutor::find(session('Tutor'))->first();
+
+        // dd(session('Tutor'));
+        $tutor = Tutor::find(session('Tutor'));
 
         $courses = Courses::where('tutor_id', $tutor->id)->get();
         $courseCount = $tutor->courses()->count();
+
 
         return view(
             'Tutor.dashboard',
@@ -65,7 +69,7 @@ class TutorController extends Controller
 
     /**
      * See List of student that enrolled for your course
-    */
+     */
     public function students()
     {
         $tutor_id =  session('Tutor');

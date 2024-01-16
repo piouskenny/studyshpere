@@ -44,7 +44,6 @@ Route::get('/user/profile', [UserController::class, 'profile'])->name('profile')
  */
 Route::get('/tutor_signup', [TutorAuthController::class, 'signup'])->name('tutor_signup_page');
 Route::post('/tutor_signup', [TutorAuthController::class, 'create'])->name('tutor_sigup');
-
 Route::get('/tutor_dashboard', [TutorController::class, 'dashboard'])->name('tutor_dashboard')->middleware('tutor_auth');
 Route::get('/tutor_createCourse', [TutorController::class, 'createCourse'])->name('tutor_createCourse')->middleware('tutor_auth');
 Route::post('/tutor_storeCourse', [TutorController::class, 'storeCourse'])->name('tutor_storeCourse')->middleware('tutor_auth');

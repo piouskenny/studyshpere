@@ -19,7 +19,7 @@ class TutorAuthmiddleware
         if (!session()->has('Tutor')) {
             return redirect(route('login_page'));
         } elseif (session()->has('Tutor')) {
-            $tutor = Tutor::where('id', '=', session('Tutor'))->first();
+            $tutor = Tutor::where('id', session('Tutor'))->first();
         }
 
         return $next($request);
