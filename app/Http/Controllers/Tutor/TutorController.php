@@ -15,8 +15,6 @@ class TutorController extends Controller
 {
     public function dashboard()
     {
-
-        // dd(session('Tutor'));
         $tutor = Tutor::find(session('Tutor'));
 
         $courses = Courses::where('tutor_id', $tutor->id)->get();
