@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Course\CourseController;
 use App\Http\Controllers\Course\EnrollController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Tutor\TutorAuthController;
@@ -59,3 +60,10 @@ Route::post('/admin_login', [AdminAuthController::class, 'check'])->name('admin_
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin_dashboard')->middleware('admin_auth');
 Route::get('/admin/addTutor', [AdminController::class, 'add_tutor'])->name('admin_addTutor')->middleware('admin_auth');
 Route::post('/admin/addTutor', [AdminController::class, 'save_tutor'])->name('admin_saveTutor')->middleware('admin_auth');
+
+
+/**
+ * Special Courses endpoints
+ */
+Route::get('course-content/{course_id}', [TutorController::class, 'createCourseContent'])->name('createCourseContent')->middleware('tutor_auth');
+Route::post('create/course/content', [CourseController::class, 'createCourseContent'])->name('createCourseContentPost');

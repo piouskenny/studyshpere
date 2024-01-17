@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class CourseContent extends Model
 {
+    protected $fillable =
+    [
+        'course_id',
+        'content_type',
+        'content_url',
+        'order'
+    ];
     use HasFactory;
 }

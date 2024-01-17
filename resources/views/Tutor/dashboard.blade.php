@@ -34,15 +34,15 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title font-weight-bold"><a>{{ $course->course_name }}</a></h5>
-                            <ul class="list-unstyled list-inline mb-0">
+                            {{-- <ul class="list-unstyled list-inline mb-0">
                                 <li class="list-inline-item">
                                     <p class="text-muted">Enrolled (0)</p>
                                 </li>
-                            </ul>
+                            </ul> --}}
                         </div>
-                        {{-- <a class="btn btn-primary">
-                            View Course
-                        </a> --}}
+                        <a class="btn btn-primary btn-sm" href="{{route('createCourseContent',$course->id)}}">
+                            Add Content
+                        </a>
                     </div>
                     @empty
                     <div class="flex justify-content-center">
