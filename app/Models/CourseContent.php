@@ -9,10 +9,15 @@ class CourseContent extends Model
 {
     protected $fillable =
     [
-        'course_id',
+        'courses_id',
         'content_type',
         'content_url',
         'order'
     ];
     use HasFactory;
+
+    public function course()
+    {
+        return $this->belongsToMany(Courses::class);
+    }
 }

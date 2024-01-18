@@ -10,6 +10,8 @@
                 <form action="{{route('createCourseContentPost')}}" method="post">
                     @csrf
                     @method('POST')
+                    <input type="text" name="course_id" value="{{$course->id}}" class="form-control" hidden />
+
                     <div class="form-group shadow-sm">
                         <label for="content_type">
                             content Types
@@ -18,7 +20,6 @@
                             <option value="">Select Content Type</option>
                             <option value="video">Video</option>
                             <option value="document">Document</option>
-
                         </select>
                     </div>
                     <div class="form-group shadow-sm">

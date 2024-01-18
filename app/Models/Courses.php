@@ -20,5 +20,9 @@ class Courses extends Model
         return $this->belongsTo(Tutor::class);
     }
 
+    public function courseContent() {
+        return $this->hasMany(CourseContent::class);
+    }
+
     use HasFactory;
 }

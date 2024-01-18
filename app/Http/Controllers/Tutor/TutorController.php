@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Tutor;
 
 use App\Http\Controllers\Controller;
+use App\Models\CourseContent;
 use App\Models\CourseEnrollment;
 use App\Models\Courses;
 use App\Models\Tutor;
@@ -98,7 +99,32 @@ class TutorController extends Controller
 
     public function createCourseContent($id)
     {
+        $course = Courses::find($id);
+
         $tutor = Tutor::where('id', '=', session('Tutor'))->first();
-        return view('Tutor.CreateCourseContent')->with('tutor', $tutor);
+        return view(
+            'Tutor.CreateCourseContent',
+            [
+                'course' => $course
+            ]
+        )->with('tutor', $tutor);
+    }
+
+    public function singleCourse($course_id)
+    {
+        $tutor = Tutor::where('id', '=', session('Tutor'))->first();
+        $course = Courses::find($course_id);
+
+        $courseContent = CourseContent::where('courses_id', $course_id)->get();
+        
+        
+
+        return view(
+            'Tutor.singleCourse',
+            [
+                'course' => $course,
+                'courseContent' => $courseContent
+            ]
+        )->with('tutor', $tutor);
     }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('course_contents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
+            $table->foreignId('courses_id')->constrained('courses')->cascadeOnDelete();
             $table->enum('content_type', ['video', 'document']);
             $table->string('content_url');
             $table->unsignedInteger('order')->default(1);
