@@ -67,4 +67,9 @@ Route::post('/admin/addTutor', [AdminController::class, 'save_tutor'])->name('ad
  */
 Route::get('course-content/{course_id}', [TutorController::class, 'createCourseContent'])->name('createCourseContent')->middleware('tutor_auth');
 Route::post('create/course/content', [CourseController::class, 'createCourseContent'])->name('createCourseContentPost');
-Route::get('course/Single/{course_id}', [TutorController::class, 'singleCourse'])->name('tutorSingleCourse')->middleware('tutor_auth');
+
+
+/**
+ * Common route for both tutor and student
+ */
+Route::get('course/Single/{course_id}', [TutorController::class, 'singleCourse'])->name('tutorSingleCourse');
