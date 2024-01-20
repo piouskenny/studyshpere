@@ -29,19 +29,16 @@
                     <h2>Courses</h2>
                     @forelse($courses as $course)
                     <div class="card col-md-4 my-2 pb-0">
-                        <div class="bg-image hover-overlay ripple course_card flex justify-content-center" data-mdb-ripple-color="light">
-                            <img src="{{ asset('course_img/' . $course->course_image) }}" class="img-fluid course_img" />
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title font-weight-bold"><a>{{ $course->course_name }}</a></h5>
-                            {{-- <ul class="list-unstyled list-inline mb-0">
-                                <li class="list-inline-item">
-                                    <p class="text-muted">Enrolled (0)</p>
-                                </li>
-                            </ul> --}}
-                        </div>
-                        <a class="btn btn-primary btn-sm" href="{{route('createCourseContent',$course->id)}}">
-                            Add Content
+                        <a href="{{ route('tutorSingleCourse', $course->id) }}">
+                            <div class="bg-image hover-overlay ripple course_card flex justify-content-center" data-mdb-ripple-color="light">
+                                <img src="{{ asset('course_img/' . $course->course_image) }}" class="img-fluid course_img" />
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title font-weight-bold"><a>{{ $course->course_name }}</a></h5>
+                            </div>
+                            <a class="btn btn-primary btn-sm" href="{{route('createCourseContent',$course->id)}}">
+                                Add Content
+                            </a>
                         </a>
                     </div>
                     @empty
