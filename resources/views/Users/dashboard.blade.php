@@ -19,7 +19,7 @@
 
             <div class="col-md-3 shadow-sm p-5 text-center  card_mobile-space">
                 <h2>Pending Courses</h2>
-                <h1> 3 </h1>
+                <h1> 0 </h1>
             </div>
         </div>
 
@@ -27,7 +27,7 @@
             <h2>Enrolled Courses</h2>
             @forelse($courses as $course)
             <div class="card col-md-4 my-2 pb-2">
-                <a href="{{ route('tutorSingleCourse', $course->id) }}">
+                <a href="{{ route('studentSingleCourse', $course->id) }}">
                     <div class="bg-image hover-overlay ripple course_card flex justify-content-center" data-mdb-ripple-color="light">
                         <img src="{{ asset('course_img/' . $course->course_image) }}" class="img-fluid course_img" />
                     </div>

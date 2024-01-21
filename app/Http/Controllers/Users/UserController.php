@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\CourseContent;
 use App\Models\CourseEnrollment;
 use App\Models\Courses;
+use App\Models\Tutor;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -45,5 +47,29 @@ class UserController extends Controller
         $user = User::where('id', '=', session('User'))->first();
 
         return view('Users.profile')->with('user', $user);
+    }
+
+
+    /**
+     * User can view their signle course detials
+     *
+     */
+
+    public function singleCourse($course_id)
+    {
+        $user = User::where('id', '=', session('User'))->first();
+        $course = Courses::find($course_id);
+
+        $courseContent = CourseContent::where('courses_id', $course_id)->get();
+        $tutor = Tutor::where('id', $course->tutor_id)->first();
+
+        return view(
+            'Users.singleCourse',
+            [
+                'course' => $course,
+                'courseContent' => $courseContent,
+                'tutor' => $tutor,
+            ]
+        )->with('user', $user);
     }
 }

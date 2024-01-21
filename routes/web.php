@@ -38,7 +38,7 @@ Route::get('verify_otp_page', [UserAuthController::class, 'verify_otp_page'])->n
 Route::get('/logout', [UserAuthController::class, 'logout'])->name('logout')->middleware('user_auth');
 Route::get('/user/dashboard', [UserController::class, 'dashboard'])->name('dashboard')->middleware('user_auth');
 Route::get('/user/profile', [UserController::class, 'profile'])->name('profile')->middleware('user_auth');
-
+Route::get('user/course_content/{course_id}', [UserController::class, 'singleCourse'])->name('studentSingleCourse')->middleware('user_auth');
 
 /** 
  *  Tutor Auth and Dashboard Controller
@@ -49,6 +49,7 @@ Route::get('/tutor_dashboard', [TutorController::class, 'dashboard'])->name('tut
 Route::get('/tutor_createCourse', [TutorController::class, 'createCourse'])->name('tutor_createCourse')->middleware('tutor_auth');
 Route::post('/tutor_storeCourse', [TutorController::class, 'storeCourse'])->name('tutor_storeCourse')->middleware('tutor_auth');
 Route::get('tutor/students', [TutorController::class, 'students'])->name('tutor_students')->middleware('tutor_auth');
+
 
 /** 
  *  Admin Auth and Dashboard Controller
@@ -67,9 +68,4 @@ Route::post('/admin/addTutor', [AdminController::class, 'save_tutor'])->name('ad
  */
 Route::get('course-content/{course_id}', [TutorController::class, 'createCourseContent'])->name('createCourseContent')->middleware('tutor_auth');
 Route::post('create/course/content', [CourseController::class, 'createCourseContent'])->name('createCourseContentPost');
-
-
-/**
- * Common route for both tutor and student
- */
-Route::get('course/Single/{course_id}', [TutorController::class, 'singleCourse'])->name('tutorSingleCourse');
+Route::get('course/Single/{course_id}', [TutorController::class, 'singleCourse'])->name('tutorSingleCourse')->middleware('tutor_auth');
