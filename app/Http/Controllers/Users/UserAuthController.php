@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserAuthRequest;
+use App\Models\OTP;
 use App\Models\Tutor;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -37,6 +38,18 @@ class UserAuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+
+        /*
+        |--------------------------------------------------------------------------
+        | store user in otp table
+        |--------------------------------------------------------------------------
+        */
+        $user_otp = random_int(1000, 9999);
+        OTP::create([
+            'user_id' => $user->id,
+            'otp' => $user_otp,
+        ]);
+
         return view(
             'Users.verify_otp',
         )->with('user', $user);
@@ -59,7 +72,6 @@ class UserAuthController extends Controller
             'otp' => 'required|min:4|numeric'
         ]);
 
-        // check if OTP is valid
 
         $user = User::where('id', $request->id)->first();
 

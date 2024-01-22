@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('course_progress', function (Blueprint $table) {
+        Schema::create('o_t_p_s', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->constrained('users')->cascadeOnDelete();
+            $table->integer('otp');
             $table->timestamps();
         });
     }
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('course_progress');
+        Schema::dropIfExists('o_t_p_s');
     }
 };

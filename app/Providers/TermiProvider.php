@@ -11,16 +11,16 @@ class TermiProvider
     {
         $curl = curl_init();
         $data = array(
-            "api_key" => "Your API key",
+            "api_key" => env('TERMI_API_KEY'),
             "message_type" => "NUMERIC",
-            "to" => "eg. 2348109077743",
+            "to" => 234 . $phonenumber,
             "from" => "Approved Sender ID or Configuration ID",
             "channel" => "dnd",
             "pin_attempts" => 10,
             "pin_time_to_live" =>  5,
             "pin_length" => 6,
-            "pin_placeholder" => "< 1234 >",
-            "message_text" => "Your pin is < 1234 >",
+            "pin_placeholder" => $otp,
+            "message_text" => "Your pin is $otp",
             "pin_type" => "NUMERIC"
         );
 
