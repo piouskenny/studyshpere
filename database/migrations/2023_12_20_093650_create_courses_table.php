@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigInteger('tutor_id')->nullable();
             $table->bigInteger('students_enrolled')->nullable();
             $table->string('course_image')->nullable();
+            $table->text("description")->nullable();
             $table->timestamps();
             $table->foreign('tutor_id')->references('id')->on('tutors')->onDelete('cascade');
         });
@@ -26,7 +27,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    
+
     public function down(): void
     {
         Schema::dropIfExists('courses');

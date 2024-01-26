@@ -1,23 +1,26 @@
 @extends('Layout.app')
 @section('content')
 <!-- ======= Hero Section ======= -->
-<section id="hero">
-    <div class="container">
+<section id="hero" class="shadow-sm">
+    <div class="container ">
         <div class="row justify-content-between">
-            <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center pb-5">
+            <div class="col-lg-5 pt-5 pt-lg-0
+             {{-- order-2 order-lg-1  --}}
+             d-flex align-items-center pb-5">
                 <div data-aos="zoom-out">
-                    <h1>Build Your Knowledge With <span>StudySphere</span></h1>
-                    <h2>We are dedicated to make learning easy for you</h2>
+                    <h1 class="text-primary">StudySphere</h1>
+                    <p class="text-secondary">Build your knowledge with us, we are dedicated to make learning easy for you</p>
                     <div class="text-center text-lg-start">
                         <a href="#about" class="btn-get-started scrollto">Get Started</a>
                     </div>
                 </div>
             </div>
 
+            <div class="col-lg-7">
+                <img src="{{ asset('hero.png') }}" />
+            </div>
         </div>
     </div>
-
-
 </section><!-- End Hero -->
 
 <main id="main">
@@ -28,6 +31,7 @@
 
             <div class="row">
                 <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch" data-aos="fade-right">
+
                 </div>
 
                 <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" data-aos="fade-left">

@@ -14,7 +14,7 @@ class TermiProvider
             "api_key" => env('TERMI_API_KEY'),
             "message_type" => "NUMERIC",
             "to" => 234 . $phonenumber,
-            "from" => "Approved Sender ID or Configuration ID",
+            "from" => "Piouskenny",
             "channel" => "dnd",
             "pin_attempts" => 10,
             "pin_time_to_live" =>  5,

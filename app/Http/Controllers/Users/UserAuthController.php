@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\TermiProvider;
 
 class UserAuthController extends Controller
 {
@@ -44,11 +45,25 @@ class UserAuthController extends Controller
         | store user in otp table
         |--------------------------------------------------------------------------
         */
-        $user_otp = random_int(1000, 9999);
+        $user_otp = random_int(100000, 999999);
         OTP::create([
             'user_id' => $user->id,
             'otp' => $user_otp,
         ]);
+
+        /**
+         * Send OTP to phoneumber
+         */
+
+        $termiApi = new TermiProvider;
+
+        try {
+            $api_sendOTP = $termiApi->sendOTP($request->phonenumber, $user_otp);
+            dd($api_sendOTP);
+        } catch (\Exception $e) {
+            return back()->with('sorry', 'something went wrong, please try again');
+        }
+
 
         return view(
             'Users.verify_otp',
@@ -69,7 +84,7 @@ class UserAuthController extends Controller
     public function verify_otp(Request $request)
     {
         $request->validate([
-            'otp' => 'required|min:4|numeric'
+            'otp' => 'required|min:6|numeric'
         ]);
 
 
@@ -79,6 +94,19 @@ class UserAuthController extends Controller
         if (!$user) {
             return back()->with('danger', 'user not found');
         }
+
+        // check if user has been verified
+        if ($user->phone_verified == true) {
+            return back()->with('success', 'user phone number has already been verified');
+        }
+
+        // check the opt that was sent to the database
+        $otp = OTP::where('user_id', $request->id);
+
+        if ($otp->otp != $request->otp) {
+            return back()->with('danger', 'Invalid OTP');
+        }
+
         $request->session()->put('User', $user->id);
         return redirect(route('dashboard'))->with('user', $user);
     }

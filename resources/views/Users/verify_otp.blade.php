@@ -33,7 +33,7 @@
 
                             <div class="form-outline mb-4">
                                 <input type="password" id="form3Example4" name="otp" class="form-control" />
-                                <label class="form-label" for="form3Example4">4 digit OTP</label>
+                                <label class="form-label" for="form3Example4">6 digit OTP</label>
                                 <span class="d-block text-danger">
                                     @error('otp')
                                     {{$message}}
