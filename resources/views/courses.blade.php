@@ -3,6 +3,8 @@
 
 <main id="courses">
     <div class="container">
+        <h1 class="my-5">Courses</h1>
+
         <!-- ======= Courses Card Section ======= -->
         <div class="row">
             @forelse($courses as $course)
@@ -29,7 +31,7 @@
 
             @endforelse
 
-            <div  id="paginate" class="mt-5"> 
+            <div id="paginate" class="mt-5">
                 {{ $courses->links() }}
 
             </div>
