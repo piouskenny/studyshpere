@@ -20,6 +20,13 @@
     height: 300px; */
 }
 
+#paginate {
+    height: 70px;
+    overflow: hidden;
+    /* overflow-y: hidden;
+    overflow-x: hidden; */
+}
+
 .wp-button {
     margin-top: 14px;
 }

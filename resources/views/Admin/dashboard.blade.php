@@ -24,7 +24,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="row">
                     <h2>Courses</h2>
                     @forelse($courses as $course)
@@ -33,19 +33,22 @@
                             <img src="{{ asset('course_img/' . $course->course_image) }}" class="img-fluid course_img" />
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title font-weight-bold"><a>{{ $course->course_name }}</a></h5>
+                            <p class="card-title font-weight-bold"><a>{{ $course->course_name }}</a></p>
                         </div>
                     </div>
                     @empty
                     <div class="flex justify-content-center">
                         <div class="alert alert-danger text-center">
-                            You've not added any course yet
+                            No courses has been added yet
                         </div>
                     </div>
                     @endforelse
+                    <div id="paginate" class="mt-5">
+                        {{ $courses->links() }}
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="shadow-sm p-3 mt-3">
                     <div class="d-flex justify-content-between align-items-center">
                         <h2 class="text-primary">Tutors</h2>

@@ -33,7 +33,6 @@
 
             <div id="paginate" class="mt-5">
                 {{ $courses->links() }}
-
             </div>
         </div>
 

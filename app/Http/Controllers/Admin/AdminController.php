@@ -60,7 +60,6 @@ class AdminController extends Controller
             'password' => 'required|string|min:8',
         ]);
 
-
         $tutor = Tutor::create([
             'full_name' => $request->full_name,
             'email' => $request->email,
