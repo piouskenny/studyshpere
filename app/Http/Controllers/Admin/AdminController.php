@@ -20,7 +20,7 @@ class AdminController extends Controller
     public function dashboard()
     {
         $admin = Admin::find(session('Admin'))->first();
-        $this->courses = Courses::all();
+        $this->courses = Courses::paginate(6);
         $this->student = User::all();
         $this->tutors = Tutor::all();
 

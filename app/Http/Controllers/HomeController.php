@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function courses()
     {
         $courses = Courses::paginate(6);
-
+        
         return view(
             'courses',
             [

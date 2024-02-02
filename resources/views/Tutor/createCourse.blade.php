@@ -8,7 +8,7 @@
                     @csrf
                     @method('post')
                     <div data-mdb-input-init class="form-outline mb-4">
-                        <label class="form-label" for="form6Example3">course Name</label>
+                        <label class="form-label" for="form6Example3">Course Name</label>
                         <input type="text" id="form6Example3" class="form-control" name="course_name" />
                         <span class="d-block text-danger">
                             @error('course_name')
@@ -21,12 +21,21 @@
                         <label class="form-label" for="form6Example4">Course Type</label>
                         <select type="text" id="form6Example4" name="course_type" class="form-control">
                             <option>Choose Course Type</option>
-                            <option value="video">Video Only</option>
-                            <option value="text">Text only</option>
-                            <option value="text_video">Text and Video</option>
+                            <option value="video">Video</option>
+                            <option value="text">Document</option>
                         </select>
                         <span class="d-block text-danger">
                             @error('course_type')
+                            {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <label class="form-label" for="form6Example4">Course Description</label>
+                        <textarea class="form-control" row="6" name="description"></textarea>
+                        <span class="d-block text-danger">
+                            @error('description')
                             {{ $message }}
                             @enderror
                         </span>
@@ -45,7 +54,7 @@
 
                     <div data-mdb-input-init class="form-outline mb-4">
                         <label class="form-label" for="form6Example5">Course Image</label>
-                        <input type="file" id="form6Example5" class="form-control" name="course_image" />
+                        <input type="file" id="form6Example5" class="form-control-file" name="course_image" />
                         <span class="d-block text-danger">
                             @error('course_image')
                             {{ $message }}

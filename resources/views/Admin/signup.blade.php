@@ -1,7 +1,7 @@
 @extends('Layout.app')
 @section('content')
 <!-- Section: Design Block -->
-<section class="text-center text-lg-start primary_bg ">
+<section class="text-center text-lg-start">
     <style>
         .cascading-right {
             margin-right: -50px;
@@ -17,8 +17,8 @@
 
     <!-- Jumbotron -->
     <div class="container py-4 ">
-        <div class="row g-0 align-items-center justify-content-center">
-            <div class="col-lg-5 mb-5 mb-lg-0">
+        <div class="row g-0 justify-content-center">
+            <div class="col-lg-4 mb-5 mb-lg-0">
                 <div class="card cascading-right" style="
             background: hsla(0, 0%, 100%, 0.55);
             backdrop-filter: blur(30px);
@@ -85,11 +85,10 @@
                     </div>
                 </div>
             </div>
-            {{--
             <div class="col-lg-6 mb-5 mb-lg-0">
-                <img src="{{ asset('assets/img/studyshere.jpg') }}" class="w-100 rounded-4 shadow-4" alt="" />
-        </div> --}}
-    </div>
+                <img src="{{ asset('3629604.jpg') }}" class="img-fluid rounded-top" alt="" />
+            </div>
+        </div>
     </div>
     <!-- Jumbotron -->
 </section>

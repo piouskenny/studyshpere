@@ -47,9 +47,11 @@ class TutorController extends Controller
         $request->validate([
             'course_name' => 'string',
             'course_type' => 'string',
+            'description' => 'required',
             'tutor' => 'integer',
             'course_image' => 'required|mimes:png,jpg,jpeg|max:3072'
         ]);
+
 
         $course_image_name = time() . '-' . $request->course_name . '.' . $request->course_image->extension();
 
@@ -58,6 +60,7 @@ class TutorController extends Controller
         $course = Courses::create([
             'course_name' => $request->course_name,
             'course_type' => $request->course_type,
+            'description'  => $request->description,
             'tutor_id' => $request->tutor,
             'course_image' => $course_image_name
         ]);
@@ -116,8 +119,8 @@ class TutorController extends Controller
         $course = Courses::find($course_id);
 
         $courseContent = CourseContent::where('courses_id', $course_id)->get();
-        
-        
+
+
 
         return view(
             'Tutor.singleCourse',

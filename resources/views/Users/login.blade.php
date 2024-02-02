@@ -23,16 +23,16 @@
             background: hsla(0, 0%, 100%, 0.55);
             backdrop-filter: blur(30px);
             ">
-                    <div class=" p-5 shadow-5 text-center">
+                    <div class=" p-5 shadow-sm text-center">
                         @include('components.alert')
-                        <h1 class="text-primary" style="font-weight: bold;">StudySphere</h1>
+                        <h3 class="text-primary" style="font-weight: bold;">StudySphere</h3>
 
-                        <h2 class="fw-bold mb-5">Login</h2>
+                        <h5 class="fw-bold mb-5">Login</h5>
                         <form method="post" action={{ route('login') }}>
                             @method('POST')
                             @csrf
                             <!-- Phone input -->
-                            <div class="form-outline mb-4">
+                            <div class="form-outline mb-3">
                                 <input type="number" id="form3Example3" class="form-control" name="phonenumber" />
                                 <label class="form-label" for="form3Example3">Phone Number</label>
                                 <span class="text-danger d-block">
@@ -43,7 +43,7 @@
                             </div>
 
                             <!-- Password input -->
-                            <div class="form-outline mb-4">
+                            <div class="form-outline mb-3">
                                 <input type="password" id="form3Example4" class="form-control" name="password" />
                                 <label class="form-label" for="form3Example4">Password</label>
                                 <span class="text-danger d-block">
@@ -54,7 +54,7 @@
                             </div>
 
                             <!-- Submit button -->
-                            <button type="submit" class="btn btn-primary w-100 btn-block mb-4 shadow">
+                            <button type="submit" class="btn btn-primary w-100 btn-block mb-3 shadow">
                                 Login
                             </button>
 
@@ -68,8 +68,7 @@
                 </div>
             </div>
             <div class="col-lg-6 mb-5 mb-lg-0">
-                <<img src="{{ asset('3629604.jpg') }}" class="img-fluid rounded-top" alt="" />
-
+                <img src="{{ asset('3629604.jpg') }}" class="img-fluid rounded-top" alt="" />
             </div>
         </div>
     </div>

@@ -10,6 +10,7 @@ class Courses extends Model
     protected $fillable = [
         'course_name',
         'course_type',
+        'description',
         'tutor_id',
         'students_enrolled',
         'course_image'
@@ -20,7 +21,8 @@ class Courses extends Model
         return $this->belongsTo(Tutor::class);
     }
 
-    public function courseContent() {
+    public function courseContent()
+    {
         return $this->hasMany(CourseContent::class);
     }
 
