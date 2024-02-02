@@ -2,7 +2,7 @@
 @section('content')
 <div class="main-panel">
     <div class="content-wrapper bg-light">
-        <div class="my-2F">
+        <div class="my-2">
             @include('components.alert')
         </div>
         <div class="row mb-5">
@@ -29,12 +29,14 @@
                     <h2>Courses</h2>
                     @forelse($courses as $course)
                     <div class="card col-md-4 my-2 pb-0">
-                        <div class="bg-image hover-overlay ripple course_card flex justify-content-center" data-mdb-ripple-color="light">
-                            <img src="{{ asset('course_img/' . $course->course_image) }}" class="img-fluid course_img" />
-                        </div>
-                        <div class="card-body">
-                            <p class="card-title font-weight-bold"><a>{{ $course->course_name }}</a></p>
-                        </div>
+                        <a href="{{ route('admin_singleCourse', $course->id) }}">
+                            <div class="bg-image hover-overlay ripple course_card flex justify-content-center" data-mdb-ripple-color="light">
+                                <img src="{{ asset('course_img/' . $course->course_image) }}" class="img-fluid course_img" />
+                            </div>
+                            <div class="card-body">
+                                <p class="card-title font-weight-bold"><a>{{ $course->course_name }}</a></p>
+                            </div>
+                        </a>
                     </div>
                     @empty
                     <div class="flex justify-content-center">

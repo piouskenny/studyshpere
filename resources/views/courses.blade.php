@@ -16,7 +16,7 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ $course->course_name }}</h5>
-                        <p class="card-text">{{ $course->description }}</p>
+                        {{-- <p class="card-text">{{ $course->description }}</p> --}}
                         <a href="{{route('singleCourses',$course->id)}}" class="btn btn-primary">View Course</a>
                     </div>
                 </div>

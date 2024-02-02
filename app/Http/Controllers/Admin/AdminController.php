@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\CourseContent;
 use App\Models\Courses;
 use App\Models\Tutor;
 use App\Models\User;
@@ -67,6 +68,7 @@ class AdminController extends Controller
         )->with('admin', $admin);
     }
 
+
     public function save_tutor(Request $request)
     {
         $request->validate([
@@ -84,5 +86,38 @@ class AdminController extends Controller
         ]);
 
         return redirect(route('admin_dashboard'))->with('success', 'Tutor has been added succesfully');
+    }
+
+
+    public function singleCourse($course_id)
+    {
+        $admin = Admin::find(session('Admin'))->first();
+        $course = Courses::find($course_id);
+        $courseContent = CourseContent::where('courses_id', $course_id)->get();
+
+        return view(
+            'admin.singleCourse',
+            [
+                'course' => $course,
+                'courseContent' => $courseContent
+            ]
+        )->with('admin', $admin);
+    }
+
+
+
+    public function delete_tutor($id)
+    {
+        Tutor::destroy($id);
+
+        return redirect(route('admin_dashboard'))->with('success', 'Tutor has been deleted succesfully');
+    }
+
+
+    public function delete_course($id)
+    {
+        Courses::destroy($id);
+
+        return redirect(route('admin_dashboard'))->with('success', 'course has been deleted succesfully');
     }
 }

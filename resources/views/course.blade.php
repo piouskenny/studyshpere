@@ -1,23 +1,8 @@
 @extends('Layout.app')
 @section('content')
-<section id="hero">
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center pb-5">
-                <div data-aos="zoom-out">
-                    <h1><span>COURSES</span></h1>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
-</section>
-
 <main id="main">
     <!-- ======= Courses Card Section ======= -->
-    <section id="about" class="about container">
+    <section id="about" class="about container mt-5">
         <div class="container-fluid">
 
             @include('components.alert')
@@ -34,10 +19,7 @@
                     <h1>{{$course->course_name}}</h1>
                     <small class="text-primary">By: {{ $course->tutor->full_name}} </small>
                     <h4 class='mt-3'>Content Type: {{$course->course_type}}</h4>
-                    <p class="text-secondary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate ullam vel
-                        eum, expedita minima nostrum ea deleniti ipsum fuga voluptatibus officia omnis sint adipisci sed
-                        corrupti ducimus ad deserunt? Ullam necessitatibus hic unde et odio ad aliquam soluta voluptate
-                        animi aspernatur. Architecto enim vero incidunt necessitatibus, ab aliquam ea odit?</p>
+                    <p class="text-secondary"> {{ $course->description }} </p>
 
                     <div class="mt-5">
                         <form method="post" action={{route('enroll',$course->id)  }}>

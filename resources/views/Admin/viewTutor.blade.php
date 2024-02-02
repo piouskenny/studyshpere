@@ -19,6 +19,13 @@
                                     <li class="mb-2 mb-xl-3 display-28"><span class="display-26  me-2 f">Owned Courses:</span> {{ $courses->count() }}</li>
                                     <li class="display-28"><span class="display-26  me-2 f">Phone Number:</span> 0{{$tutor->phonenumber}}</li>
                                 </ul>
+
+
+                                <form action=" {{ route('admin_delete_tutor',  $tutor->id   )}} " method="post">
+                                    @csrf
+                                    @method('post')
+                                    <button type="submit" class="btn btn-danger">Delete Tutor</button>
+                                </form>
                             </div>
                         </div>
                     </div>
