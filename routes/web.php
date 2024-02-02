@@ -61,6 +61,7 @@ Route::post('/admin_login', [AdminAuthController::class, 'check'])->name('admin_
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin_dashboard')->middleware('admin_auth');
 Route::get('/admin/addTutor', [AdminController::class, 'add_tutor'])->name('admin_addTutor')->middleware('admin_auth');
 Route::post('/admin/addTutor', [AdminController::class, 'save_tutor'])->name('admin_saveTutor')->middleware('admin_auth');
+Route::get('/admin/viewTutor/{id}', [AdminController::class, 'view_tutor'])->name('admin_view_tutor')->middleware('admin_auth');
 
 
 /**

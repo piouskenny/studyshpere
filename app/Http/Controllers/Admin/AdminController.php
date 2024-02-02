@@ -51,6 +51,22 @@ class AdminController extends Controller
         return view('Admin.addTutor')->with('admin', $admin);
     }
 
+
+    public function view_tutor($id)
+    {
+        $admin = Admin::find(session('Admin'))->first();
+        $tutor = Tutor::find($id)->first();
+        $courses = Courses::where('tutor_id', $id)->get();
+
+        return view(
+            'Admin.viewTutor',
+            [
+                'tutor' => $tutor,
+                'courses' => $courses,
+            ]
+        )->with('admin', $admin);
+    }
+
     public function save_tutor(Request $request)
     {
         $request->validate([

@@ -69,7 +69,8 @@
                                 <tr class="">
                                     <td scope="row">{{ $tutor->full_name }}</td>
                                     <td>0{{ $tutor->phonenumber }}</td>
-                                    <td><button class="btn btn-primary"> View</button></td>
+
+                                    <td><a href="{{ route('admin_view_tutor', $tutor->id) }}" class="btn btn-primary"> View</a></td>
                                 </tr>
                                 @empty
                                 <div class="p-2 text-white bg-danger">
