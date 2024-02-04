@@ -17,11 +17,10 @@ class CourseController extends Controller
             'course_file' =>  'mimes:pdf,ppt'
         ]);
 
-
-
-
-        $course_file_name = time() . '-' . $request->course_id . '.' . $request->course_file->extension();
-        $request->course_file->move(public_path('course_file'), $course_file_name);
+        if ($request->course_file !== null) {
+            $course_file_name = time() . '-' . $request->course_id . '.' . $request->course_file->extension();
+            $request->course_file->move(public_path('course_file'), $course_file_name);
+        }
 
         CourseContent::create([
             'courses_id' => $request->course_id,
