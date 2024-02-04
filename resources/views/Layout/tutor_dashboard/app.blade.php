@@ -123,7 +123,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('profile') }}">
+                        <a class="nav-link" href="#">
                             <i class="menu-icon mdi mdi-account-circle-outline"></i>
                             <span class="menu-title">Profile</span>
                         </a>
