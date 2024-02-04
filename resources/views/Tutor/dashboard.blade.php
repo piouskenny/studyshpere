@@ -59,12 +59,7 @@
                             <li class="d-flex justify-content-between align-items-center my-2">
                                 <h1 class="h4">Assement 1</h1> <button class="btn btn-primary"> View</button>
                             </li>
-                            <li class="d-flex justify-content-between align-items-center my-2">
-                                <h1 class="h4">Assement 2</h1> <button class="btn btn-primary"> View</button>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center my-2">
-                                <h1 class="h4">Assement 3</h1> <button class="btn btn-primary"> View</button>
-                            </li>
+
                         </ul>
                     </div>
                 </div>

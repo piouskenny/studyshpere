@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Tutor;
 use App\Http\Controllers\Controller;
 use App\Models\Tutor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class TutorAuthController extends Controller
@@ -37,5 +38,13 @@ class TutorAuthController extends Controller
         return view(
             'Users.verify_otp',
         )->with('user', $user);
+    }
+
+
+    public function logout()
+    {
+        $tutorInfo = session()->pull('Tutor');
+        Auth::logout();
+        return redirect(route('login_page'));
     }
 }

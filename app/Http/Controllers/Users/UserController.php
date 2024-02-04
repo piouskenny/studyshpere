@@ -110,4 +110,12 @@ class UserController extends Controller
             ]
         )->with('user', $user);
     }
+
+
+    public function logoutPage()
+    {
+        $user = User::where('id', '=', session('User'))->first();
+
+        return view('Users.logout')->with('user', $user);
+    }
 }

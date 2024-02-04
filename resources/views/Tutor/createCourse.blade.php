@@ -20,9 +20,9 @@
                     <div data-mdb-input-init class="form-outline mb-4">
                         <label class="form-label" for="form6Example4">Course Type</label>
                         <select type="text" id="form6Example4" name="course_type" class="form-control">
-                            <option>Choose Course Type</option>
+                            <option value="">Choose Course Type</option>
                             <option value="video">Video</option>
-                            <option value="text">Document</option>
+                            <option value="pdf">PDF or PPT</option>
                         </select>
                         <span class="d-block text-danger">
                             @error('course_type')

@@ -39,8 +39,10 @@ Route::get('/logout', [UserAuthController::class, 'logout'])->name('logout')->mi
 Route::get('/user/dashboard', [UserController::class, 'dashboard'])->name('dashboard')->middleware('user_auth');
 Route::get('/user/profile', [UserController::class, 'profile'])->name('profile')->middleware('user_auth');
 Route::get('user/course_content/{course_id}', [UserController::class, 'singleCourse'])->name('studentSingleCourse')->middleware('user_auth');
-Route::get('/user/courses', [UserController::class, 'all_courses'])->name('user_all_courses')->middleware('user_auth');;
-Route::get('/user/course/{id}', [UserController::class, 'view_course'])->name('singleCourseDetails')->middleware('user_auth');;
+Route::get('/user/courses', [UserController::class, 'all_courses'])->name('user_all_courses')->middleware('user_auth');
+Route::get('/user/course/{id}', [UserController::class, 'view_course'])->name('singleCourseDetails')->middleware('user_auth');
+Route::get('/user/logoutPage', [UserController::class, 'logoutPage'])->name('user_logoutPage')->middleware('user_auth');
+
 
 
 /** 
@@ -52,7 +54,8 @@ Route::get('/tutor_dashboard', [TutorController::class, 'dashboard'])->name('tut
 Route::get('/tutor_createCourse', [TutorController::class, 'createCourse'])->name('tutor_createCourse')->middleware('tutor_auth');
 Route::post('/tutor_storeCourse', [TutorController::class, 'storeCourse'])->name('tutor_storeCourse')->middleware('tutor_auth');
 Route::get('tutor/students', [TutorController::class, 'students'])->name('tutor_students')->middleware('tutor_auth');
-
+Route::get('/tutor/logoutPage', [TutorController::class, 'logoutPage'])->name('tutor_logoutPage')->middleware('tutor_auth');
+Route::get('/tutor/logout', [TutorAuthController::class, 'logout'])->name('tutor_logout')->middleware('tutor_auth');
 
 /** 
  *  Admin Auth and Dashboard Controller

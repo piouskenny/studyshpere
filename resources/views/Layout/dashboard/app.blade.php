@@ -149,7 +149,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}">
+                        <a class="nav-link" href="{{ route('user_logoutPage') }}">
                             <i class="menu-icon mdi mdi-layers-outline"></i>
                             <span class="menu-title text-danger">Logout</span>
                         </a>

@@ -46,7 +46,7 @@ class TutorController extends Controller
     {
         $request->validate([
             'course_name' => 'string',
-            'course_type' => 'string',
+            'course_type' => 'required',
             'description' => 'required',
             'tutor' => 'integer',
             'course_image' => 'required|mimes:png,jpg,jpeg|max:3072'
@@ -129,5 +129,12 @@ class TutorController extends Controller
                 'courseContent' => $courseContent
             ]
         )->with('tutor', $tutor);
+    }
+
+    public function logoutPage()
+    {
+        $tutor = Tutor::where('id', '=', session('Tutor'))->first();
+
+        return view('Tutor.logout')->with('tutor', $tutor);
     }
 }

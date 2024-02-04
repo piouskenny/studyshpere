@@ -35,7 +35,7 @@
                         <h5 class="card-title font-weight-bold"><a>{{ $course->course_name }}</a></h5>
                     </div>
                     {{-- This is the button that will begin to dispay each course content one after the other --}}
-                    <a href="" class="btn btn-primary">
+                    <a href="{{ route('studentSingleCourse', $course->id) }}" class="btn btn-primary">
                         Learn
                     </a>
                 </a>
