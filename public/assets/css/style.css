@@ -712,19 +712,19 @@ section {
     justify-content: center;
     width: 64px;
     height: 64px;
-    border: 2px solid #7ceec6;
+    border: 2px solid #0d12fc;
     border-radius: 50px;
     transition: 0.5s;
 }
 
 .about .icon-box .icon i {
-    color: #1acc8d;
+    color: #0003b3;
     font-size: 32px;
 }
 
 .about .icon-box:hover .icon {
-    background: #1acc8d;
-    border-color: #1acc8d;
+    background: #0d12fc;
+    border-color: #0d12fc;
 }
 
 .about .icon-box:hover .icon i {

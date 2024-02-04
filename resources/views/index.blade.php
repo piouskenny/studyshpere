@@ -30,8 +30,8 @@
         <div class="container-fluid">
 
             <div class="row">
-                <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch" data-aos="fade-right">
-
+                <div class="col-xl-5 col-lg-6 d-flex justify-content-center align-items-stretch" data-aos="fade-right">
+                    <img src="{{ asset('about.jpg') }}" class="img w-100 h-75" />
                 </div>
 
                 <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" data-aos="fade-left">
@@ -71,7 +71,6 @@
 
                 <div class="col-lg-3 col-md-6">
                     <div class="count-box">
-                        <i class="bi bi-emoji-smile"></i>
                         <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
                         <p>Happy Clients</p>
                     </div>
@@ -79,7 +78,6 @@
 
                 <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
                     <div class="count-box">
-                        <i class="bi bi-journal-richtext"></i>
                         <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
                         <p>Projects</p>
                     </div>
@@ -87,7 +85,6 @@
 
                 <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
                     <div class="count-box">
-                        <i class="bi bi-headset"></i>
                         <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
                         <p>Hours Of Support</p>
                     </div>
@@ -95,7 +92,6 @@
 
                 <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
                     <div class="count-box">
-                        <i class="bi bi-people"></i>
                         <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
                         <p>Hard Workers</p>
                     </div>
@@ -107,4 +103,32 @@
     </section><!-- End Counts Section -->
 
 </main><!-- End #main -->
+
+<footer id="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-6 col-md-6">
+                    <div class="footer-info">
+                        <h3>StudySphere</h3>
+                    </div>
+                </div>
+
+                <div class="col-lg-6  col-md-6 footer-links">
+                    <h4>Our Courses</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
 @endsection

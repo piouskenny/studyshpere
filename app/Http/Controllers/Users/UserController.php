@@ -50,6 +50,44 @@ class UserController extends Controller
     }
 
 
+
+    /**
+     * View of all the avaliable courses
+     *
+     */
+    public function all_courses()
+    {
+        $user = User::where('id', '=', session('User'))->first();
+        $courses = Courses::paginate(6);
+
+        return view(
+            'Users.courses',
+            [
+                'courses' => $courses,
+            ]
+        )->with('user', $user);
+    }
+
+
+
+    /**
+     * Signle course detials 
+     */
+
+    public function view_course($id)
+    {
+        $user = User::where('id', '=', session('User'))->first();
+        $course = Courses::find($id);
+
+        return view(
+            'Users.coursedetails',
+            [
+                'course' => $course
+            ]
+        )->with('user', $user);
+    }
+
+
     /**
      * User can view their signle course detials
      *
