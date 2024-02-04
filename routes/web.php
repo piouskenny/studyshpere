@@ -39,8 +39,8 @@ Route::get('/logout', [UserAuthController::class, 'logout'])->name('logout')->mi
 Route::get('/user/dashboard', [UserController::class, 'dashboard'])->name('dashboard')->middleware('user_auth');
 Route::get('/user/profile', [UserController::class, 'profile'])->name('profile')->middleware('user_auth');
 Route::get('user/course_content/{course_id}', [UserController::class, 'singleCourse'])->name('studentSingleCourse')->middleware('user_auth');
-Route::get('/user/courses', [UserController::class, 'courses'])->name('user_all_courses')->middleware('user_auth');;
-Route::get('/user/course/{id}', [UserController::class, 'singleCourse'])->name('singleCourseDetails')->middleware('user_auth');;
+Route::get('/user/courses', [UserController::class, 'all_courses'])->name('user_all_courses')->middleware('user_auth');;
+Route::get('/user/course/{id}', [UserController::class, 'view_course'])->name('singleCourseDetails')->middleware('user_auth');;
 
 
 /** 

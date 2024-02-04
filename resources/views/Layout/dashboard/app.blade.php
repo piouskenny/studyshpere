@@ -143,7 +143,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('courses')}}">
+                        <a class="nav-link" href="{{route('user_all_courses')}}">
                             <i class="menu-icon mdi mdi-table"></i>
                             <span class="menu-title">Courses</span>
                         </a>
