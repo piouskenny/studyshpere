@@ -13,43 +13,58 @@
                 @forelse($courseContent as $content)
                 <div>
                     <div class="shadow-sm my-2">
-                        @if($content->content_type === 'video')
-                        <div class="shadow-sm">
-                            <iframe width="560" height="315" src="{{ $content->content_url }}" frameborder="0"></iframe>
-                        </div>
-                        @elseif($content->content_type === 'document')
-                        <div>
-                            <a href="{{ $content->content_url }}" target="_blank">View Document</a>
-                        </div>
-                        @endif
-                    </div>
-                </div>
-
-                @empty
-                <div class="text-light text-center bg-danger">
-                    NO CONTENT ADDED FOR THIS COURSE YET
-                </div>
-                @endforelse
-            </div>
-            <div class="col-md-4 shadow-sm">
-                <div class="d-flex justify-content-center">
-                    <h2>Assement</h2>
-                </div>
-
-                <div class="shadow-sm p-3 mt-3">
-                    <div>
                         <ul>
-                            {{-- For each created assement --}}
-                            <li class="d-flex justify-content-between align-items-center my-2">
-                                <h1 class="h4">Assement 1</h1> <button class="btn btn-primary"> Take</button>
-                            </li>
+                            <l1 class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <a href="#" class="nav-link text-dark">
+
+                                        <h4 class="">{{$content->content_name}}</h4>
+                                        <small>- video</small>
+                                    </a>
+                                </div>
+
+                                <div>
+                                    ✅
+                                </div>
+
+                            </l1>
+
+
+
                         </ul>
-                    </div>
+
+                        {{-- <div class="shadow-sm">
+                            <iframe width="560" height="315" src="{{ $content->content_url }}" frameborder="0"></iframe>
+                    </div> --}}
+
+                </div>
+            </div>
+
+            @empty
+            <div class="text-light text-center bg-danger">
+                NO CONTENT ADDED FOR THIS COURSE YET
+            </div>
+            @endforelse
+        </div>
+        <div class="col-md-4 shadow-sm">
+            <div class="d-flex justify-content-center">
+                <h2>Assement</h2>
+            </div>
+
+            <div class="shadow-sm p-3 mt-3">
+                <div>
+                    <ul>
+                        {{-- For each created assement --}}
+                        <li class="d-flex justify-content-between align-items-center my-2">
+                            <h1 class="h4">Assement 1</h1> <button class="btn btn-primary"> Take</button>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-
-
     </div>
+
+
+</div>
 </div>
 @endsection

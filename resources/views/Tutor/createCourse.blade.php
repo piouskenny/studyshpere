@@ -18,12 +18,8 @@
                     </div>
 
                     <div data-mdb-input-init class="form-outline mb-4">
-                        <label class="form-label" for="form6Example4">Course Type</label>
-                        <select type="text" id="form6Example4" name="course_type" class="form-control">
-                            <option value="">Choose Course Type</option>
-                            <option value="video">Video</option>
-                            <option value="pdf">PDF or PPT</option>
-                        </select>
+                        {{-- <label class="form-label" for="form6Example4">Course Type</label>   --}}
+                        <input type="text" id="form6Example3" class="form-control" value="video" name="course_type" hidden />
                         <span class="d-block text-danger">
                             @error('course_type')
                             {{ $message }}

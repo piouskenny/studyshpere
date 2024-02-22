@@ -12,6 +12,8 @@ class CourseContent extends Model
         'courses_id',
         'content_type',
         'content_url',
+        'content_name',
+        'content_number',
         'order'
     ];
     use HasFactory;

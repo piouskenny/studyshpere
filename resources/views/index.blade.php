@@ -17,7 +17,7 @@
             </div>
 
             <div class="col-lg-7">
-                <img src="{{ asset('hero.png') }}" />
+                <img class="w-100 h-100 rounded rounded-5" src="{{ asset('assets/img/3.jpg') }}" />
             </div>
         </div>
     </div>
@@ -29,9 +29,9 @@
     <section id="about" class="about">
         <div class="container-fluid">
 
-            <div class="row">
+            <div class="row align-items-center justify-content-center">
                 <div class="col-xl-5 col-lg-6 d-flex justify-content-center align-items-stretch" data-aos="fade-right">
-                    <img src="{{ asset('about.jpg') }}" class="img w-100 h-75" />
+                    <img src="{{ asset('assets/img/1.jpg') }}" class="img w-100 h-50 rounded-5" />
                 </div>
 
                 <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" data-aos="fade-left">

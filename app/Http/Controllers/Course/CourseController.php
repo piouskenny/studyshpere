@@ -10,22 +10,21 @@ class CourseController extends Controller
 {
     public function createCourseContent(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'course_id' => 'required|integer',
             'content_type' => 'required|string',
             'content_url' => 'string',
-            'course_file' =>  'mimes:pdf,ppt'
+            'content_name' => 'required|string',
+            'content_number' => 'required|unique:course_contents'
         ]);
-
-        if ($request->course_file !== null) {
-            $course_file_name = time() . '-' . $request->course_id . '.' . $request->course_file->extension();
-            $request->course_file->move(public_path('course_file'), $course_file_name);
-        }
 
         CourseContent::create([
             'courses_id' => $request->course_id,
             'content_type' => $request->content_type,
-            'content_url' => $request->content_url ?? $course_file_name
+            'content_name' => $request->content_name,
+            'content_number' => $request->content_number,
+            'content_url' => $request->content_url
         ]);
 
         return redirect(route('tutorSingleCourse', $request->course_id))->with('');
