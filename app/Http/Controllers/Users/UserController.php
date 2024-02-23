@@ -127,6 +127,11 @@ class UserController extends Controller
         )->with('user', $user);
     }
 
+    public function submitProgress(Request $request) 
+    {
+        dd($request->all());
+    }
+
     public function logoutPage()
     {
         $user = User::where('id', '=', session('User'))->first();
