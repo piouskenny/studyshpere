@@ -111,6 +111,21 @@ class UserController extends Controller
         )->with('user', $user);
     }
 
+    public function learnSingleCourse($content_id)
+    {
+        $singleVideo = CourseContent::find($content_id);
+
+        $user = User::where('id', '=', session('User'))->first();
+
+        $singleVideo = CourseContent::find($content_id);
+
+        return view(
+            'Users.learnsingleCourse',
+            [
+                'singleVideo' => $singleVideo
+            ]
+        )->with('user', $user);
+    }
 
     public function logoutPage()
     {

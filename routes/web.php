@@ -42,7 +42,7 @@ Route::get('user/course_content/{course_id}', [UserController::class, 'singleCou
 Route::get('/user/courses', [UserController::class, 'all_courses'])->name('user_all_courses')->middleware('user_auth');
 Route::get('/user/course/{id}', [UserController::class, 'view_course'])->name('singleCourseDetails')->middleware('user_auth');
 Route::get('/user/logoutPage', [UserController::class, 'logoutPage'])->name('user_logoutPage')->middleware('user_auth');
-
+Route::get('/users/Video_learning/{content_id}', [UserController::class, 'learnSingleCourse'])->name('user_learnSingleCourse')->middleware('user_auth');
 
 
 /** 

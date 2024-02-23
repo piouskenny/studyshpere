@@ -16,7 +16,7 @@
                         <ul>
                             <l1 class="d-flex justify-content-between align-items-center">
                                 <div>
-                                    <a href="#" class="nav-link text-dark">
+                                    <a href="{{ route('user_learnSingleCourse',$content->id) }}" class="nav-link text-dark">
 
                                         <h4 class="">{{$content->content_name}}</h4>
                                         <small>- video</small>
@@ -28,9 +28,6 @@
                                 </div>
 
                             </l1>
-
-
-
                         </ul>
 
                         {{-- <div class="shadow-sm">
