@@ -29,11 +29,6 @@
 
                             </l1>
                         </ul>
-
-                        {{-- <div class="shadow-sm">
-                            <iframe width="560" height="315" src="{{ $content->content_url }}" frameborder="0"></iframe>
-                    </div> --}}
-
                 </div>
             </div>
 

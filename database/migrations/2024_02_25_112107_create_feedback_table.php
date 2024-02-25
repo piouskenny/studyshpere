@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('tutor_id')->constrained('tutors')->cascadeOnDelete();
+            $table->foreignId('courses_id')->constrained('courses')->cascadeOnDelete();
+            $table->text('feedback_message');
             $table->timestamps();
         });
     }
