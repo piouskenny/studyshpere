@@ -44,7 +44,18 @@
             @endforelse
         </div>
         <div class="col-md-4 shadow-sm">
-            <div class="d-flex justify-content-center">
+
+            <div class="shadow-sm p-3 mt-3">
+                <div>
+                    <ul>
+                        {{-- For each created assement --}}
+                        <li class="d-flex justify-content-center align-items-center my-2">
+                            <button class="btn btn-danger text-center"> Give Feedback</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-3">
                 <h2>Assement</h2>
             </div>
 
