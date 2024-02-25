@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CourseContent;
 use App\Models\CourseEnrollment;
 use App\Models\Courses;
+use App\Models\Feedback;
 use App\Models\Tutor;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -51,6 +52,7 @@ class UserController extends Controller
 
 
 
+
     /**
      * View of all the avaliable courses
      *
@@ -71,7 +73,7 @@ class UserController extends Controller
 
 
     /**
-     * Signle course detials 
+     * Signle course detials
      */
 
     public function view_course($id)
@@ -127,7 +129,48 @@ class UserController extends Controller
         )->with('user', $user);
     }
 
-    public function submitProgress(Request $request) 
+    /**
+     *Page for User  to create feedback
+     */
+
+    public function feedback($course_id)
+    {
+        $user = User::where('id', '=', session('User'))->first();
+        $course = Courses::find($course_id);
+        $tutor_id = Tutor::where('id', $course->tutor_id)->first();
+
+        return view(
+            'Users.feedback',
+            [
+                'user' => $user,
+                'course' => $course,
+                'tutor_id' => $tutor_id
+            ]
+        )->with('user', $user);
+    }
+
+    /**
+     * Submit Feedback
+     */
+    public function submitFeedback(Request $request)
+    {
+        $request->validate([
+            'feedback_message' => 'required'
+        ]);
+
+
+        $feedback = Feedback::create([
+            'user_id' => $request->user_id,
+            'tutor_id' => $request->tutor_id,
+            'courses_id' => $request->course_id,
+            'feedback_message' => $request->feedback_message,
+        ]);
+
+        return back()->with('success', 'Feedback was submitted successfully');
+    }
+
+
+    public function submitProgress(Request $request)
     {
         dd($request->all());
     }

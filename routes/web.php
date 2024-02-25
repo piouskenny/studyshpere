@@ -26,7 +26,7 @@ Route::get('/courses/{id}', [HomeController::class, 'singleCourse'])->name('sing
  */
 Route::post('/enroll/{course_id}', EnrollController::class)->name('enroll');
 
-/** 
+/**
  *  User Auth and Dashboard Controller
  */
 Route::get('/signup', [UserAuthController::class, 'signup'])->name('signup_page');
@@ -43,9 +43,9 @@ Route::get('/user/courses', [UserController::class, 'all_courses'])->name('user_
 Route::get('/user/course/{id}', [UserController::class, 'view_course'])->name('singleCourseDetails')->middleware('user_auth');
 Route::get('/user/logoutPage', [UserController::class, 'logoutPage'])->name('user_logoutPage')->middleware('user_auth');
 Route::get('/users/Video_learning/{content_id}', [UserController::class, 'learnSingleCourse'])->name('user_learnSingleCourse')->middleware('user_auth');
-
-
-/** 
+Route::get('/user/feedback/{course_id}', [UserController::class, 'feedback'])->name('user_feedback')->middleware('user_auth');;
+Route::post('/user/feedback', [UserController::class, 'submitFeedback'])->name('user_submitfeedback');
+/**
  *  Tutor Auth and Dashboard Controller
  */
 Route::get('/tutor_signup', [TutorAuthController::class, 'signup'])->name('tutor_signup_page');
@@ -57,7 +57,7 @@ Route::get('tutor/students', [TutorController::class, 'students'])->name('tutor_
 Route::get('/tutor/logoutPage', [TutorController::class, 'logoutPage'])->name('tutor_logoutPage')->middleware('tutor_auth');
 Route::get('/tutor/logout', [TutorAuthController::class, 'logout'])->name('tutor_logout')->middleware('tutor_auth');
 
-/** 
+/**
  *  Admin Auth and Dashboard Controller
  */
 Route::get('/admin/signup', [AdminAuthController::class, 'signup'])->name('admin_signup');

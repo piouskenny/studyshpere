@@ -45,7 +45,7 @@
                     <ul>
                         {{-- For each created assement --}}
                         <li class="d-flex justify-content-center align-items-center my-2">
-                            <button class="btn btn-danger text-center"> Give Feedback</button>
+                            <a href="{{ route('user_feedback', $course->id) }}" class="btn btn-danger text-center"> Give Feedback</a>
                         </li>
                     </ul>
                 </div>
