@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>StudyShpere </title>
+    <title>StudyPadi </title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('dashboard/vendors/feather/feather.css') }}">
     <link rel="stylesheet" href="{{ asset('dashboard/vendors/mdi/css/materialdesignicons.min.css') }}">
@@ -23,6 +23,7 @@
     {{-- Main CSS --}}
 
     <link rel="stylesheet" href="{{ asset('dashboard/dashboard.css') }}">
+
 </head>
 
 <body>
@@ -36,10 +37,10 @@
                     </button>
                 </div>
                 <div>
-                    <a class="navbar-brand brand-logo" href="index.html">
-                        StudyShere
+                    <a class="navbar-brand brand-logo" href="#">
+                        StudyPadi
                     </a>
-                    <a class="navbar-brand brand-logo-mini" href="index.html">
+                    <a class="navbar-brand brand-logo-mini" href="#">
                         Ss
                     </a>
                 </div>
@@ -50,6 +51,8 @@
                         <h1 class="welcome-text">Welcome, <span class="text-black fw-bold">{{ $user->full_name }}</span></h1>
                     </li>
                 </ul>
+
+
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item d-none d-lg-block">
                         <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
@@ -58,9 +61,12 @@
                             </span>
                             <input type="text" class="form-control">
                         </div>
+
                     </li>
 
                     <li class="nav-item dropdown">
+                        <div id="google_translate_element"></div>
+
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notificationDropdown">
                             <a class="dropdown-item py-3 border-bottom">
                                 <p class="mb-0 font-weight-medium float-left">You have 4 new notifications </p>
@@ -148,6 +154,14 @@
                             <span class="menu-title">Courses</span>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="menu-icon mdi mdi-table"></i>
+                            <span class="menu-title">Feedback</span>
+                        </a>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('user_logoutPage') }}">
                             <i class="menu-icon mdi mdi-layers-outline"></i>
@@ -159,6 +173,14 @@
             </nav>
             <!-- partial -->
 
+
+            <script type="text/javascript">
+                function googleTranslateElementInit() {
+                    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                }
+            </script>
+
+            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
             @yield('content')
         </div>
     </div>

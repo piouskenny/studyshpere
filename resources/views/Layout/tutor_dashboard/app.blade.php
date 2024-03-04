@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>StudyShpere </title>
+    <title>StudyPadi </title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('dashboard/vendors/feather/feather.css') }}">
     <link rel="stylesheet" href="{{ asset('dashboard/vendors/mdi/css/materialdesignicons.min.css') }}">
@@ -38,7 +38,7 @@
                 <div>
                     <a class="navbar-brand brand-logo" href="index.html">
                         <!-- <img src="images/logo.svg" alt="logo" /> -->
-                        StudyShere
+                        StudyPadi
                     </a>
                     <a class="navbar-brand brand-logo-mini" href="index.html">
                         <img src="images/logo-mini.svg" alt="logo" />
@@ -149,6 +149,13 @@
                         <a class="nav-link" href="#tables" aria-expanded="false" aria-controls="tables">
                             <i class="menu-icon mdi mdi-table"></i>
                             <span class="menu-title">Settings</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('tutor_feedbacks') }}" aria-expanded="false" aria-controls="form-elements">
+                            <i class="menu-icon mdi mdi-card-text-outline"></i>
+                            <span class="menu-title">Feedbacks</span>
                             <i class="menu-arrow"></i>
                         </a>
                     </li>

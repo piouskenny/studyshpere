@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <h2>Assement</h2>
+                <h2>Assesment</h2>
                 <div class="shadow-sm p-3 mt-3">
                     <div>
                         <ul>

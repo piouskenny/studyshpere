@@ -21,5 +21,10 @@ class Tutor extends Model
         return $this->hasMany(Courses::class);
     }
 
+    public function feedbacks()
+    {
+        return $this->hasMany(Feedback::class);
+    }
+
     use HasFactory;
 }

@@ -45,6 +45,7 @@ Route::get('/user/logoutPage', [UserController::class, 'logoutPage'])->name('use
 Route::get('/users/Video_learning/{content_id}', [UserController::class, 'learnSingleCourse'])->name('user_learnSingleCourse')->middleware('user_auth');
 Route::get('/user/feedback/{course_id}', [UserController::class, 'feedback'])->name('user_feedback')->middleware('user_auth');;
 Route::post('/user/feedback', [UserController::class, 'submitFeedback'])->name('user_submitfeedback');
+
 /**
  *  Tutor Auth and Dashboard Controller
  */
@@ -56,7 +57,7 @@ Route::post('/tutor_storeCourse', [TutorController::class, 'storeCourse'])->name
 Route::get('tutor/students', [TutorController::class, 'students'])->name('tutor_students')->middleware('tutor_auth');
 Route::get('/tutor/logoutPage', [TutorController::class, 'logoutPage'])->name('tutor_logoutPage')->middleware('tutor_auth');
 Route::get('/tutor/logout', [TutorAuthController::class, 'logout'])->name('tutor_logout')->middleware('tutor_auth');
-
+Route::get('tutor/feedbacks', [TutorController::class, 'feedbacks'])->name('tutor_feedbacks')->middleware('tutor_auth');
 /**
  *  Admin Auth and Dashboard Controller
  */
@@ -71,7 +72,6 @@ Route::get('/admin/viewTutor/{id}', [AdminController::class, 'view_tutor'])->nam
 Route::post('/admin/deleteTutor/{id}', [AdminController::class, 'delete_tutor'])->name('admin_delete_tutor')->middleware('admin_auth');
 Route::get('/admin/Single/{course_id}', [AdminController::class, 'singleCourse'])->name('admin_singleCourse')->middleware('admin_auth');
 Route::post('/admin/deleteCourse/{id}', [AdminController::class, 'delete_course'])->name('admin_delete_course')->middleware('admin_auth');
-
 
 
 /**

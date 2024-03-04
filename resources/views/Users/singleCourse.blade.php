@@ -7,6 +7,7 @@
 </a>
 <div class="main-panel">
     <div class="content-wrapper bg-light">
+        <h1 class="h2">{{ $course->course_name }}</h1>
 
         <div class="row mb-5 p-5">
             <div class="col-md-8 shadow-sm">

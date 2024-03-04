@@ -8,8 +8,8 @@
 <div class="main-panel">
     <div class="content-wrapper bg-light">
 
-        <div class="row mb-5 p-5">
-            <div class="col-md-8 shadow-sm">
+        <div class="row mb-5 p-5 justify-content-center">
+            <div class="col-md-10 shadow-sm">
 
 
                 <div class="shadow-sm">
@@ -22,7 +22,7 @@
                         @csrf
                         @method('POST')
                         <div class="form-check">
-                            <small class="d-block text-dark">Check the completed below if you've seen this video</small class="d-block text-secondary  ">
+                            <small class="d-block text-dark">Check the completed box after you finish watching this video</small class="d-block text-secondary  ">
                             <input class="form-check-input" type="checkbox" value="completed" id="flexCheckDefault">
                             <p class="form-check-label h1" for="flexCheckDefault">
                                 Completed
@@ -33,23 +33,6 @@
 
 
             </div>
-            <div class="col-md-4 shadow-sm">
-                <div class="d-flex justify-content-center">
-                    <h2>Assement</h2>
-                </div>
-
-                <div class="shadow-sm p-3 mt-3">
-                    <div>
-                        <ul>
-                            {{-- For each created assement --}}
-                            <li class="d-flex justify-content-between align-items-center my-2">
-                                <h1 class="h4">Assement 1</h1> <button class="btn btn-primary"> Take</button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
         </div>
 
     </div>

@@ -11,9 +11,24 @@ class Feedback extends Model
     [
         'user_id',
         'tutor_id',
-        'courses_id',
+        'course',
         'feedback_message'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function tutor()
+    {
+        return $this->belongsTo(Tutor::class);
+    }
+
+    public function course()
+    {
+        return $this->belongsTo(Courses::class);
+    }
 
     use HasFactory;
 }

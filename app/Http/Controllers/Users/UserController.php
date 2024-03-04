@@ -158,11 +158,13 @@ class UserController extends Controller
             'feedback_message' => 'required'
         ]);
 
+        $course = Courses::find($request->course_id)->first();
+
 
         $feedback = Feedback::create([
             'user_id' => $request->user_id,
             'tutor_id' => $request->tutor_id,
-            'courses_id' => $request->course_id,
+            'course' => $course->course_name,
             'feedback_message' => $request->feedback_message,
         ]);
 

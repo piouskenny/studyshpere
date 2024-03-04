@@ -26,5 +26,11 @@ class Courses extends Model
         return $this->hasMany(CourseContent::class);
     }
 
+
+    public function feedbacks()
+    {
+        return $this->hasMany(Feedback::class);
+    }
+
     use HasFactory;
 }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('tutor_id')->constrained('tutors')->cascadeOnDelete();
-            $table->foreignId('courses_id')->constrained('courses')->cascadeOnDelete();
+            $table->string('course');
             $table->text('feedback_message');
             $table->timestamps();
         });

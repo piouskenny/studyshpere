@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CourseContent;
 use App\Models\CourseEnrollment;
 use App\Models\Courses;
+use App\Models\Feedback;
 use App\Models\Tutor;
 use App\Models\User;
 use Illuminate\Contracts\Session\Session;
@@ -106,7 +107,7 @@ class TutorController extends Controller
 
         $tutor = Tutor::where('id', '=', session('Tutor'))->first();
         return view(
-            'Tutor.CreateCourseContent',
+            'Tutor.createCourseContent',
             [
                 'course' => $course
             ]
@@ -127,6 +128,22 @@ class TutorController extends Controller
             [
                 'course' => $course,
                 'courseContent' => $courseContent
+            ]
+        )->with('tutor', $tutor);
+    }
+
+    /**
+     *View all feedbacks sent to this specific admin
+     */
+    public function feedbacks()
+    {
+        $tutor = Tutor::where('id', '=', session('Tutor'))->first();
+        $feedbacks = Feedback::where('tutor_id', session('Tutor'))->get();
+
+        return view(
+            'Tutor.feedbacks',
+            [
+                'feedbacks' => $feedbacks,
             ]
         )->with('tutor', $tutor);
     }

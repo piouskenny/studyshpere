@@ -18,7 +18,7 @@
 
                     <div class="form-group shadow-sm">
                         <label for="content_url">
-                            Course Content Name
+                            Course Content Name / Title
                         </label>
                         <input type="text" name="content_name" class="form-control" placeholder="" />
                         <span class="d-block text-danger">
