@@ -148,6 +148,26 @@ class TutorController extends Controller
         )->with('tutor', $tutor);
     }
 
+    public function createAssessmentPage($id)
+    {
+        $course = Courses::find($id);
+
+        $tutor = Tutor::where('id', '=', session('Tutor'))->first();
+
+        return view(
+            'Tutor.addAssesment',
+            [
+                'course' => $course
+            ]
+        )->with('tutor', $tutor);
+    }
+
+    public function createAssesment(Request $request)
+    {
+
+    }
+
+
     public function logoutPage()
     {
         $tutor = Tutor::where('id', '=', session('Tutor'))->first();

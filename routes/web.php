@@ -58,6 +58,9 @@ Route::get('tutor/students', [TutorController::class, 'students'])->name('tutor_
 Route::get('/tutor/logoutPage', [TutorController::class, 'logoutPage'])->name('tutor_logoutPage')->middleware('tutor_auth');
 Route::get('/tutor/logout', [TutorAuthController::class, 'logout'])->name('tutor_logout')->middleware('tutor_auth');
 Route::get('tutor/feedbacks', [TutorController::class, 'feedbacks'])->name('tutor_feedbacks')->middleware('tutor_auth');
+//creating assessment endpiont
+Route::get('tutor/create-assessment/{course_id}', [TutorController::class, 'createAssessmentPage'])->name('createAssessment')->middleware('tutor_auth');
+Route::post('tutor/createAssesment', [TutorController::class, 'createAssesment'])->name('createAssementPost')->middleware('tutor_auth');
 /**
  *  Admin Auth and Dashboard Controller
  */

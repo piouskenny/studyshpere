@@ -29,7 +29,7 @@
             <div class="col-md-4 shadow-sm">
                 <div class="d-flex justify-content-center">
                     <h2>Assement</h2>
-                    <button class="btn btn-primary mx-3 btn-sm"> Add Assement</button>
+                    <a  href=" {{ route('createAssessment', $course->id) }} "class="btn btn-primary mx-3 btn-sm"> Add Assement</a>
                 </div>
 
                 <div class="shadow-sm p-3 mt-3">

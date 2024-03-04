@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('assesments', function (Blueprint $table) {
             $table->id();
+            $table->integer('course_id');
+            $table->unsignedBigInteger('tutor_id');
+            $table->text('question');
+            $table->string('correct_answer');
+            $table->string('option_a');
+            $table->string('option_b');
+            $table->string('option_c');
+            $table->string('option_d');
+            $table->integer('score');
             $table->timestamps();
+            $table->foreign('tutor_id')->references('id')->on('tutors')->onDelete('cascade');
         });
     }
 
