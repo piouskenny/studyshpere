@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Models\CourseContent;
 use App\Models\CourseEnrollment;
+use App\Models\CourseLearningProgress;
 use App\Models\Courses;
 use App\Models\Feedback;
 use App\Models\Tutor;
@@ -121,10 +122,20 @@ class UserController extends Controller
 
         $singleVideo = CourseContent::find($content_id);
 
+        $course = Courses::find($singleVideo->courses_id);
+
+        $courseProgress = CourseLearningProgress::where('content_id', $content_id)->first();
+
+        dd($courseProgress);
+
+        // dd($status);
+
         return view(
             'Users.learnsingleCourse',
             [
-                'singleVideo' => $singleVideo
+                'singleVideo' => $singleVideo,
+                'course' => $course,
+                // 'course_progress' => $status
             ]
         )->with('user', $user);
     }
@@ -172,8 +183,30 @@ class UserController extends Controller
     }
 
 
+    /**
+     * course content progress
+     */
+
     public function submitProgress(Request $request)
     {
+        $request->validate([
+            'completed' => 'required',
+        ]);
+
+
+        if ($request->completed == 'completed') {
+            $status =  true;
+        }
+
+        CourseLearningProgress::create([
+            'user_id' => $request->user_id,
+            'content_id' => $request->content_id,
+            'completed' => $status
+        ]);
+
+        return back()->with('success', 'Course Completed');
+
+
         dd($request->all());
     }
 

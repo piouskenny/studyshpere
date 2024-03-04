@@ -45,6 +45,7 @@ Route::get('/user/logoutPage', [UserController::class, 'logoutPage'])->name('use
 Route::get('/users/Video_learning/{content_id}', [UserController::class, 'learnSingleCourse'])->name('user_learnSingleCourse')->middleware('user_auth');
 Route::get('/user/feedback/{course_id}', [UserController::class, 'feedback'])->name('user_feedback')->middleware('user_auth');;
 Route::post('/user/feedback', [UserController::class, 'submitFeedback'])->name('user_submitfeedback');
+Route::post('/user/submitProgress', [UserController::class, 'submitProgress'])->name('user_submitProgress');
 
 /**
  *  Tutor Auth and Dashboard Controller

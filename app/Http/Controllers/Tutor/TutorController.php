@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Tutor;
 
 use App\Http\Controllers\Controller;
+use App\Models\Assesment;
 use App\Models\CourseContent;
 use App\Models\CourseEnrollment;
 use App\Models\Courses;
@@ -164,7 +165,31 @@ class TutorController extends Controller
 
     public function createAssesment(Request $request)
     {
+        // dd($request->all());
 
+
+        $request->validate([
+            'course_id' => 'required|exists:courses,id',
+            'tutor_id' => 'required|exists:tutors,id',
+            'question' => 'required',
+            'correct_answer' => 'required',
+            'option_a' => 'required',
+            'option_b' => 'required',
+            'option_c' => 'required',
+        ]);
+
+
+        $create_assement =  Assesment::create([
+            'course_id' => $request->course_id,
+            'tutor_id' => $request->tutor_id,
+            'question' => $request->question,
+            'correct_answer' => $request->correct_answer,
+            'option_a' => $request->option_a,
+            'option_b' => $request->option_b,
+            'option_c' => $request->option_c
+        ]);
+
+        return back()->with('success', 'assessment created successfully');
     }
 
 

@@ -20,8 +20,6 @@ return new class extends Migration
             $table->string('option_a');
             $table->string('option_b');
             $table->string('option_c');
-            $table->string('option_d');
-            $table->integer('score');
             $table->timestamps();
             $table->foreign('tutor_id')->references('id')->on('tutors')->onDelete('cascade');
         });

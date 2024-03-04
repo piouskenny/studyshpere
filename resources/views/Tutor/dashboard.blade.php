@@ -2,7 +2,11 @@
 @section('content')
 <div class="main-panel">
     <div class=" content-wrapper bg-light">
-
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="my-2 w-50">
+                @include('components.alert')
+            </div>
+        </div>
         <div class="row mb-5">
             <div class="col-md-3 shadow-sm p-4 text-center card_mobile-space rounded rounded-md">
                 <h2>Courses</h2>

@@ -2,6 +2,11 @@
 @section('content')
 <div class="main-panel">
     <div class="content-wrapper bg-light">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="my-2 w-50">
+                @include('components.alert')
+            </div>
+        </div>
         <div class="row justify-content-center">
             <div class="col-md-6 shadow-sm">
                 <h3 class="text-center text-primary">
@@ -83,9 +88,6 @@
                             @enderror
                         </span>
                     </div>
-
-
-
 
                     <div class="form-group d-flex justify-content-center">
                         <button class="btn btn-primary w-75">Add Assesment</button>
