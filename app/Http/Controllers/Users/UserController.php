@@ -126,16 +126,21 @@ class UserController extends Controller
 
         $courseProgress = CourseLearningProgress::where('content_id', $content_id)->first();
 
-        dd($courseProgress);
+        if($courseProgress == null){
+            $status = false;
+        } else if($courseProgress->completed == true){
+            $status = true;
+        } else {
+            $status = false;
+        }
 
-        // dd($status);
 
         return view(
             'Users.learnsingleCourse',
             [
                 'singleVideo' => $singleVideo,
                 'course' => $course,
-                // 'course_progress' => $status
+                'course_progress' => $status
             ]
         )->with('user', $user);
     }

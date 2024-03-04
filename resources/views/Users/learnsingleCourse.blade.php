@@ -12,13 +12,9 @@
                     <iframe width="560" height="315" src="{{ $singleVideo->content_url }}" frameborder="0"></iframe>
                 </div>
 
-                {{--
                 @if($course_progress == true)
                 <div></div>
-                @else --}}
-
-                {{-- {{ dd($course_progress)}} --}}
-
+                @else
                 <div class="p-3">
                     <form method="post" action="{{ route('user_submitProgress') }}">
                         @csrf
@@ -37,7 +33,7 @@
                         </div>
                     </form>
                 </div>
-                {{-- @endif --}}
+                @endif
 
             </div>
         </div>
