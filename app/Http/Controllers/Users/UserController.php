@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\Assesment;
 use App\Models\CourseContent;
 use App\Models\CourseEnrollment;
 use App\Models\CourseLearningProgress;
@@ -104,12 +105,24 @@ class UserController extends Controller
         $courseContent = CourseContent::where('courses_id', $course_id)->get();
         $tutor = Tutor::where('id', $course->tutor_id)->first();
 
+        $assessments = Assesment::where('course_id', $course_id)->get();
+
+
+        if ($assessments->count() < 1) {
+            $assessment = false;
+        } else {
+            $assessment = true;
+        }
+
+        // dd($assessments);
+
         return view(
             'Users.singleCourse',
             [
                 'course' => $course,
                 'courseContent' => $courseContent,
                 'tutor' => $tutor,
+                'assessment' => $assessment
             ]
         )->with('user', $user);
     }
@@ -126,14 +139,13 @@ class UserController extends Controller
 
         $courseProgress = CourseLearningProgress::where('content_id', $content_id)->first();
 
-        if($courseProgress == null){
+        if ($courseProgress == null) {
             $status = false;
-        } else if($courseProgress->completed == true){
+        } else if ($courseProgress->completed == true) {
             $status = true;
         } else {
             $status = false;
         }
-
 
         return view(
             'Users.learnsingleCourse',
@@ -213,6 +225,21 @@ class UserController extends Controller
 
 
         dd($request->all());
+    }
+
+
+    public function takeAssessment($courseId)
+    {
+        $user = User::where('id', '=', session('User'))->first();
+
+        $assessments = Assesment::where('course_id', $courseId)->orderBy('created_at', 'desc')->paginate(1);
+
+        return view(
+            'Users.takeAssessment',
+            [
+                'assessments' => $assessments
+            ]
+        )->with('user', $user);
     }
 
     public function logoutPage()

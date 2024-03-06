@@ -46,6 +46,9 @@ Route::get('/users/Video_learning/{content_id}', [UserController::class, 'learnS
 Route::get('/user/feedback/{course_id}', [UserController::class, 'feedback'])->name('user_feedback')->middleware('user_auth');;
 Route::post('/user/feedback', [UserController::class, 'submitFeedback'])->name('user_submitfeedback');
 Route::post('/user/submitProgress', [UserController::class, 'submitProgress'])->name('user_submitProgress');
+// Assessment Endpoint
+Route::get('/user/take/assessemt/{courseId}', [UserController::class, 'takeAssessment'])->name('user_takeAssesment')->middleware('user_auth');;;
+
 
 /**
  *  Tutor Auth and Dashboard Controller
@@ -59,9 +62,15 @@ Route::get('tutor/students', [TutorController::class, 'students'])->name('tutor_
 Route::get('/tutor/logoutPage', [TutorController::class, 'logoutPage'])->name('tutor_logoutPage')->middleware('tutor_auth');
 Route::get('/tutor/logout', [TutorAuthController::class, 'logout'])->name('tutor_logout')->middleware('tutor_auth');
 Route::get('tutor/feedbacks', [TutorController::class, 'feedbacks'])->name('tutor_feedbacks')->middleware('tutor_auth');
-//creating assessment endpiont
+//assessment endpiont
 Route::get('tutor/create-assessment/{course_id}', [TutorController::class, 'createAssessmentPage'])->name('createAssessment')->middleware('tutor_auth');
 Route::post('tutor/createAssesment', [TutorController::class, 'createAssesment'])->name('createAssementPost')->middleware('tutor_auth');
+Route::get('tutor/update-assessment/{assessmentID}', [TutorController::class, 'updateAssessmentPage'])->name('updateAssessment')->middleware('tutor_auth');
+Route::post('tutor/updateAssesment', [TutorController::class, 'updateAssessment'])->name('updateAssementPost')->middleware('tutor_auth');
+Route::post('/tutor/deleteAssessment/{id}', [TutorController::class, 'delete_assessment'])->name('delete_assessment')->middleware('tutor_auth');
+
+
+
 /**
  *  Admin Auth and Dashboard Controller
  */

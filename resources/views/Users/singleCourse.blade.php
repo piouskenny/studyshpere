@@ -30,45 +30,49 @@
 
                             </l1>
                         </ul>
+                    </div>
+                </div>
+
+                @empty
+                <div class="text-light text-center bg-danger">
+                    NO CONTENT ADDED FOR THIS COURSE YET
+                </div>
+                @endforelse
+            </div>
+            <div class="col-md-4 shadow-sm">
+
+                <div class="shadow-sm p-3 mt-3">
+                    <div>
+                        <ul>
+                            {{-- For each created assement --}}
+                            <li class="d-flex justify-content-center align-items-center my-2">
+                                <a href="{{ route('user_feedback', $course->id) }}" class="btn btn-danger text-center"> Give Feedback</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+                    <h2>Assement</h2>
+                </div>
+
+                <div class="shadow-sm p-3 mt-3">
+                    <div>
+                        <ul>
+                            {{-- For each created assement --}}
+                            @if($assessment == true)
+                            <li class="d-flex justify-content-center align-items-center my-2">
+                                <a href="{{ route('user_takeAssesment', $course->id) }}" class="btn btn-primary"> Take Assessment</a>
+                            </li>
+                            @else
+                                <p class="text-danger">No assessment has been added to this course yet.</p>
+                            @endif
+                        </ul>
+                    </div>
                 </div>
             </div>
-
-            @empty
-            <div class="text-light text-center bg-danger">
-                NO CONTENT ADDED FOR THIS COURSE YET
-            </div>
-            @endforelse
         </div>
-        <div class="col-md-4 shadow-sm">
 
-            <div class="shadow-sm p-3 mt-3">
-                <div>
-                    <ul>
-                        {{-- For each created assement --}}
-                        <li class="d-flex justify-content-center align-items-center my-2">
-                            <a href="{{ route('user_feedback', $course->id) }}" class="btn btn-danger text-center"> Give Feedback</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="d-flex justify-content-center mt-3">
-                <h2>Assement</h2>
-            </div>
 
-            <div class="shadow-sm p-3 mt-3">
-                <div>
-                    <ul>
-                        {{-- For each created assement --}}
-                        <li class="d-flex justify-content-between align-items-center my-2">
-                            <h1 class="h4">Assement 1</h1> <button class="btn btn-primary"> Take</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </div>
-
-
-</div>
 </div>
 @endsection

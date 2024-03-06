@@ -23,12 +23,14 @@ class TutorController extends Controller
         $courses = Courses::where('tutor_id', $tutor->id)->get();
         $courseCount = $tutor->courses()->count();
 
+        $assessments = Assesment::where('tutor_id', session('Tutor'))->get();
 
         return view(
             'Tutor.dashboard',
             [
                 'course' => $courseCount,
                 'courses' => $courses,
+                'assessments' => $assessments,
             ]
         )->with('tutor', $tutor);
     }
@@ -139,7 +141,7 @@ class TutorController extends Controller
     public function feedbacks()
     {
         $tutor = Tutor::where('id', '=', session('Tutor'))->first();
-        $feedbacks = Feedback::where('tutor_id', session('Tutor'))->get();
+        $feedbacks = Feedback::where('tutor_id', session('Tutor'))->paginate(5)->get();
 
         return view(
             'Tutor.feedbacks',
@@ -163,11 +165,10 @@ class TutorController extends Controller
         )->with('tutor', $tutor);
     }
 
+
     public function createAssesment(Request $request)
     {
         // dd($request->all());
-
-
         $request->validate([
             'course_id' => 'required|exists:courses,id',
             'tutor_id' => 'required|exists:tutors,id',
@@ -192,6 +193,60 @@ class TutorController extends Controller
         return back()->with('success', 'assessment created successfully');
     }
 
+
+    public function updateAssessmentPage($assessmentId)
+    {
+        $assesment = Assesment::find($assessmentId);
+
+        $tutor = Tutor::where('id', '=', session('Tutor'))->first();
+
+        return view(
+            'Tutor.updateAssessment',
+            [
+                'assessment' => $assesment,
+            ]
+        )->with('tutor', $tutor);;
+    }
+
+
+    public function updateAssessment(Request $request)
+    {
+        $request->validate(
+            [
+                'course_id' => 'required|exists:courses,id',
+                'tutor_id' => 'required|exists:tutors,id',
+                'question' => 'required',
+                'correct_answer' => 'required',
+                'option_a' => 'required',
+                'option_b' => 'required',
+                'option_c' => 'required'
+            ]
+        );
+
+        $assessment = Assesment::find($request->id);
+
+        $assessment->update([
+            'course_id' => $request->course_id,
+            'tutor_id' => $request->tutor_id,
+            'question' => $request->question,
+            'correct_answer' => $request->correct_answer,
+            'option_a' => $request->option_a,
+            'option_b' => $request->option_b,
+            'option_c' => $request->option_c
+        ]);
+
+
+        return redirect(route('tutor_dashboard'))->with('success', 'assessment updated successfully');
+    }
+
+
+    public function delete_assessment($id)
+    {
+        Assesment::destroy($id);
+
+
+        return redirect(route('tutor_dashboard'))->with('success', 'assessment deleted successfully');
+    }
 
     public function logoutPage()
     {

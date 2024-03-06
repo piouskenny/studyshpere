@@ -55,22 +55,30 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <h2>Assesment</h2>
+                <h2>Assessment</h2>
                 <div class="shadow-sm p-3 mt-3">
                     <div>
                         <ul>
+                            @forelse ($assessments as $assessment )
                             {{-- For each created assement --}}
                             <li class="d-flex justify-content-between align-items-center my-2">
-                                <h1 class="h4">Assement 1</h1> <button class="btn btn-primary"> View</button>
-                            </li>
+                                <h1 class="h4">{{ $assessment->question }}</h1>
+                                <a href="{{ route('updateAssessment', $assessment->id) }}" class="btn btn-primary btn-sm"> View</a>
 
-                        </ul>
-                    </div>
+                            </li>
+                            @empty
+                            <p class="text-danger">You have not added any assessment yet.</p>
+                            @endforelse
+                            {{-- <div id="paginate" class="mt-5">
+                                {{ $assessments->links() }}
+                    </div> --}}
+                    </ul>
                 </div>
             </div>
         </div>
-
     </div>
+
+</div>
 
 </div>
 </div>
