@@ -8,7 +8,7 @@
              {{-- order-2 order-lg-1  --}}
              d-flex align-items-center pb-5">
                 <div data-aos="zoom-out">
-                    <h1 class="text-primary">StudySphere</h1>
+                    <h1 class="text-primary">StudyPadi</h1>
                     <p class="text-secondary">Build your knowledge with us, we are dedicated to make learning easy for you</p>
                     <div class="text-center text-lg-start">
                         <a href="#about" class="btn-get-started scrollto">Get Started</a>

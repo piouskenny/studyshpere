@@ -41,7 +41,7 @@
                         StudyPadi
                     </a>
                     <a class="navbar-brand brand-logo-mini" href="#">
-                        Ss
+                        SP
                     </a>
                 </div>
             </div>

@@ -46,6 +46,9 @@ Route::get('/users/Video_learning/{content_id}', [UserController::class, 'learnS
 Route::get('/user/feedback/{course_id}', [UserController::class, 'feedback'])->name('user_feedback')->middleware('user_auth');;
 Route::post('/user/feedback', [UserController::class, 'submitFeedback'])->name('user_submitfeedback');
 Route::post('/user/submitProgress', [UserController::class, 'submitProgress'])->name('user_submitProgress');
+Route::post('/user/submitCompleted', [UserController::class, 'submitCompletedCourse'])->name('user_submitCompletedCourse');
+Route::post('/user/SubmitAssessment', [UserController::class, 'SubmitAssessment'])->name('user_SubmitAssessment');
+
 // Assessment Endpoint
 Route::get('/user/take/assessemt/{courseId}', [UserController::class, 'takeAssessment'])->name('user_takeAssesment')->middleware('user_auth');;;
 

@@ -34,10 +34,37 @@
                 </div>
 
                 @empty
-                <div class="text-light text-center bg-danger">
+                <div class="text-warning text-center ">
                     NO CONTENT ADDED FOR THIS COURSE YET
                 </div>
                 @endforelse
+
+
+                    @if($courseCompleted == true)
+                        <div>
+                            <p class="text-primary">You have completed this course</p>
+                        </div>
+                    @else
+                        <div class="p-3">
+                            <form method="post" action="{{ route('user_submitCompletedCourse') }}">
+                                @csrf
+                                @method('POST')
+                                <div class="form-check">
+                                    <small class="d-block text-dark">Check the completed box after you have completed this course</small class="d-block text-secondary  ">
+                                    <div class="d-flex mt-3 align-items-center">
+                                        <input type="text" name="user_id" value="{{ $user->id }}" id="" hidden/>
+                                        <input type="text" name="courses_id" value="{{$course->id}}" id="" hidden />
+                                        <input class="" type="checkbox" value="completed" id="flexCheckDefault" name="completed" />
+                                        <p class="form-check-label h1 mx-2">
+                                            Completed
+                                        </p>
+                                        <button type="submit" class="btn  btn-sm btn-primary">submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    @endif
+
             </div>
             <div class="col-md-4 shadow-sm">
 
@@ -51,6 +78,7 @@
                         </ul>
                     </div>
                 </div>
+
                 <div class="d-flex justify-content-center mt-3">
                     <h2>Assement</h2>
                 </div>
@@ -61,7 +89,13 @@
                             {{-- For each created assement --}}
                             @if($assessment == true)
                             <li class="d-flex justify-content-center align-items-center my-2">
+                                @if($courseCompleted == true)
                                 <a href="{{ route('user_takeAssesment', $course->id) }}" class="btn btn-primary"> Take Assessment</a>
+                                @else
+                                    <p class="text-warning">
+                                        Complete the course to take the assessment!!!
+                                    </p>
+                                @endif
                             </li>
                             @else
                                 <p class="text-danger">No assessment has been added to this course yet.</p>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Models\Assesment;
+use App\Models\CourseCompleted;
 use App\Models\CourseContent;
 use App\Models\CourseEnrollment;
 use App\Models\CourseLearningProgress;
@@ -75,7 +76,7 @@ class UserController extends Controller
 
 
     /**
-     * Signle course detials
+     * signle course detials
      */
 
     public function view_course($id)
@@ -107,22 +108,29 @@ class UserController extends Controller
 
         $assessments = Assesment::where('course_id', $course_id)->get();
 
+        $courseCompleted = CourseCompleted::where('courses_id', $course_id)->first();
+
+        if ($courseCompleted == null) {
+            $status = false;
+        } else if ($courseCompleted->completed == true) {
+            $status = true;
+        } else {
+            $status = false;
+        }
 
         if ($assessments->count() < 1) {
             $assessment = false;
         } else {
             $assessment = true;
         }
-
-        // dd($assessments);
-
         return view(
             'Users.singleCourse',
             [
                 'course' => $course,
                 'courseContent' => $courseContent,
                 'tutor' => $tutor,
-                'assessment' => $assessment
+                'assessment' => $assessment,
+                'courseCompleted' => $courseCompleted
             ]
         )->with('user', $user);
     }
@@ -222,11 +230,27 @@ class UserController extends Controller
         ]);
 
         return back()->with('success', 'Course Completed');
-
-
-        dd($request->all());
     }
 
+    public function  submitCompletedCourse (Request $request)
+    {
+        $request->validate([
+            'completed' => 'required',
+        ]);
+
+
+        if ($request->completed == 'completed') {
+            $status =  true;
+        }
+
+        CourseCompleted::create([
+            'user_id' => $request->user_id,
+            'courses_id' => $request->courses_id,
+            'completed' => $status
+        ]);
+
+        return back()->with('success', 'Course Completed');
+    }
 
     public function takeAssessment($courseId)
     {
@@ -242,10 +266,26 @@ class UserController extends Controller
         )->with('user', $user);
     }
 
+
+
+    public  function SubmitAssessment(Request $request)
+    {
+
+
+        if($request->finish == null){
+            return back()->with('success', 'click next to continue');
+        } else {
+//            go back to the course main route;
+            return false;
+        }
+    }
+
     public function logoutPage()
     {
         $user = User::where('id', '=', session('User'))->first();
 
         return view('Users.logout')->with('user', $user);
     }
+
+
 }

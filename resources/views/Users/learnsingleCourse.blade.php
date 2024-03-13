@@ -13,7 +13,9 @@
                 </div>
 
                 @if($course_progress == true)
-                <div></div>
+                    <div class="my-4">
+                        <p class="text-primary">You have seen this video</p>
+                    </div>
                 @else
                 <div class="p-3">
                     <form method="post" action="{{ route('user_submitProgress') }}">
