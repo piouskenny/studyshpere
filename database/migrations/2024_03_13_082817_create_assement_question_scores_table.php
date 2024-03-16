@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('assement_question_scores', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->constrained('users')->cascadeOnDelete();
+            $table->unsignedBigInteger('assesment_id')->constrained('assesments')->cascadeOnDelete();
+            $table->unsignedBigInteger('courses_id')->constrained('courses')->cascadeOnDelete();
+            $table->boolean('correct')->default(false);
             $table->timestamps();
         });
     }

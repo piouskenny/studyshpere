@@ -48,10 +48,12 @@ Route::post('/user/feedback', [UserController::class, 'submitFeedback'])->name('
 Route::post('/user/submitProgress', [UserController::class, 'submitProgress'])->name('user_submitProgress');
 Route::post('/user/submitCompleted', [UserController::class, 'submitCompletedCourse'])->name('user_submitCompletedCourse');
 Route::post('/user/SubmitAssessment', [UserController::class, 'SubmitAssessment'])->name('user_SubmitAssessment');
+Route::get('/user/viewAssessment/{courseId}', [UserController::class, 'viewAssessment'])->name('viewAssessment');
+
 
 // Assessment Endpoint
 Route::get('/user/take/assessemt/{courseId}', [UserController::class, 'takeAssessment'])->name('user_takeAssesment')->middleware('user_auth');;;
-
+Route::get('/user/retake/assessemt/{courseId}', [UserController::class, 'retakeAssessment'])->name('user_retakeAssesment')->middleware('user_auth');;;
 
 /**
  *  Tutor Auth and Dashboard Controller

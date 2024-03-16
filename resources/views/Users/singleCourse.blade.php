@@ -90,7 +90,11 @@
                             @if($assessment == true)
                             <li class="d-flex justify-content-center align-items-center my-2">
                                 @if($courseCompleted == true)
-                                <a href="{{ route('user_takeAssesment', $course->id) }}" class="btn btn-primary"> Take Assessment</a>
+                                    @if($taken == true)
+                                        <a href="{{ route('user_retakeAssesment', $course->id) }}" class="btn btn-primary"> Retake Assessment</a>
+                                    @else
+                                        <a href="{{ route('user_takeAssesment', $course->id) }}" class="btn btn-primary"> Take Assessment</a>
+                                    @endif
                                 @else
                                     <p class="text-warning">
                                         Complete the course to take the assessment!!!

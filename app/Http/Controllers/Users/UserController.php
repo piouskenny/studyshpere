@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\AssementQuestionScore;
 use App\Models\Assesment;
 use App\Models\CourseCompleted;
 use App\Models\CourseContent;
@@ -118,11 +119,26 @@ class UserController extends Controller
             $status = false;
         }
 
+
+        //        check if user already take the assessment
+        $user_score = AssementQuestionScore::where('user_id', $user->id)
+            ->where('courses_id',$course_id)
+            ->count();
+
+
+
         if ($assessments->count() < 1) {
             $assessment = false;
         } else {
             $assessment = true;
         }
+
+        if($user_score >= 1 ) {
+            $taken = true;
+        } else {
+            $taken = false;
+        }
+
         return view(
             'Users.singleCourse',
             [
@@ -130,15 +146,14 @@ class UserController extends Controller
                 'courseContent' => $courseContent,
                 'tutor' => $tutor,
                 'assessment' => $assessment,
-                'courseCompleted' => $courseCompleted
+                'courseCompleted' => $courseCompleted,
+                'taken' => $taken
             ]
         )->with('user', $user);
     }
 
     public function learnSingleCourse($content_id)
     {
-        $singleVideo = CourseContent::find($content_id);
-
         $user = User::where('id', '=', session('User'))->first();
 
         $singleVideo = CourseContent::find($content_id);
@@ -146,6 +161,8 @@ class UserController extends Controller
         $course = Courses::find($singleVideo->courses_id);
 
         $courseProgress = CourseLearningProgress::where('content_id', $content_id)->first();
+
+
 
         if ($courseProgress == null) {
             $status = false;
@@ -254,6 +271,7 @@ class UserController extends Controller
 
     public function takeAssessment($courseId)
     {
+
         $user = User::where('id', '=', session('User'))->first();
 
         $assessments = Assesment::where('course_id', $courseId)->orderBy('created_at', 'desc')->paginate(1);
@@ -261,7 +279,28 @@ class UserController extends Controller
         return view(
             'Users.takeAssessment',
             [
-                'assessments' => $assessments
+                'assessments' => $assessments,
+                'course_id' => $courseId
+            ]
+        )->with('user', $user);
+    }
+
+    public function retakeAssessment($courseId)
+    {
+
+        $user = User::where('id', '=', session('User'))->first();
+
+        $assessments = Assesment::where('course_id', $courseId)->orderBy('created_at', 'desc')->paginate(1);
+
+        $user_score = AssementQuestionScore::where('user_id', $user->id)
+            ->where('courses_id',$courseId)->delete();
+
+
+        return view(
+            'Users.takeAssessment',
+            [
+                'assessments' => $assessments,
+                'course_id' => $courseId
             ]
         )->with('user', $user);
     }
@@ -270,16 +309,57 @@ class UserController extends Controller
 
     public  function SubmitAssessment(Request $request)
     {
+        $assessment = Assesment::find($request->assessment_id);
 
+        if($request->option_a || $request->option_b || $request->option_c == $assessment->correct_answer) {
+            $correct = true;
+        } else {
+            $correct = false;
+        }
+
+        $courseId = $request->course_id;
+
+
+        AssementQuestionScore::create([
+            'user_id' => $request->user_id,
+            'assesment_id' =>  $request->assessment_id,
+            'courses_id' => $request->course_id,
+            'correct' => $correct
+        ]);
 
         if($request->finish == null){
             return back()->with('success', 'click next to continue');
         } else {
-//            go back to the course main route;
-            return false;
+            return redirect(route('viewAssessment', $courseId ))->with('success', 'You have submitted your assessment');
         }
     }
 
+    public function viewAssessment($courseId)
+    {
+
+        $user = User::where('id', '=', session('User'))->first();
+
+        // Retrieve user's score for the given course
+        $user_score = AssementQuestionScore::where('user_id', $user->id)
+            ->where('courses_id', $courseId)
+            ->where('correct', true)
+            ->count();
+
+
+
+        $attempted_questions_count = AssementQuestionScore::where('user_id', $user->id)
+            ->where('courses_id', $courseId)
+            ->count();
+
+        $course = Courses::find($courseId);
+
+        // Pass the user's score and attempted questions count to the view
+        return view('Users.assessment', [
+            'user_score' => $user_score,
+            'attempted_questions_count' => $attempted_questions_count,
+            'course' => $course->course_name
+        ])->with('user', $user);
+    }
     public function logoutPage()
     {
         $user = User::where('id', '=', session('User'))->first();

@@ -8,7 +8,11 @@
 <div class="main-panel">
     <div class="content-wrapper bg-light">
         {{-- <h1 class="h2">{{ $course->course_name }}</h1> --}}
-
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="my-2 w-50">
+                @include('components.alert')
+            </div>
+        </div>
         <div class="row mb-5 p-2 justify-content-center">
             <div class="col-md-8">
                 <div class="alert alert-warning">
@@ -39,6 +43,8 @@
                     <form method="post" action="{{ route('user_SubmitAssessment') }}">
                         @csrf
                         @method('POST')
+                        <input name="user_id" value="{{$user->id}}" type="number" hidden/>
+                        <input name="course_id" value="{{$course_id}}" type="number" hidden />
                         <input name="assessment_id" value="{{$assessment->id}}" type="number" hidden/>
                         <div class="form-check">
                             <div class="d-flex mt-3 align-items-center">
