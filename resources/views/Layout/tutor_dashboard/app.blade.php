@@ -6,6 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>StudyPadi </title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('dashboard/vendors/feather/feather.css') }}">
     <link rel="stylesheet" href="{{ asset('dashboard/vendors/mdi/css/materialdesignicons.min.css') }}">

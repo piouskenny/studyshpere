@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Tutor;
 
 use App\Http\Controllers\Controller;
 use App\Models\Assesment;
+use App\Models\CourseCompleted;
 use App\Models\CourseContent;
 use App\Models\CourseEnrollment;
 use App\Models\Courses;
@@ -25,12 +26,64 @@ class TutorController extends Controller
 
         $assessments = Assesment::where('tutor_id', session('Tutor'))->get();
 
+        /**
+         * We need to return the numbers of Students
+         * We need to return the amount of students that registered for the tutor's course
+         * We need to return the amount of students that have completed the course
+         */
+
+
+        /**
+         *  All students numbers
+         */
+        $students = User::all()->count();
+
+        /**
+         * Get all the students data that has enrolled for your course
+         */
+
+        $courses_enrollment_list = CourseEnrollment::where('tutor_id', $tutor->id)->get();
+
+        $enrolledCount = $courses_enrollment_list->count();
+
+        /**
+         * Check the students that have completed the course
+         */
+
+        $studentsCompleted = [];
+        $completedCount = 0;
+
+
+
+        foreach ($courses_enrollment_list as $enrollmentlist) {
+            $completed = CourseCompleted::where('user_id', $enrollmentlist->user_id)->first();
+
+            if ($completed) {
+
+                $studentsCompleted[] = $completed;
+
+                $completedCount = $completedCount += 1;
+            }
+        }
+
+
+        $data = [
+            'labels' => ['students', 'enrolled', 'completed'],
+
+            'data' => [
+                $students,
+                $enrolledCount,
+                $completedCount - 1
+            ],
+        ];
+
         return view(
             'Tutor.dashboard',
             [
                 'course' => $courseCount,
                 'courses' => $courses,
                 'assessments' => $assessments,
+                'data' => $data
             ]
         )->with('tutor', $tutor);
     }
