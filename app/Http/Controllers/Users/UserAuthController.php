@@ -46,6 +46,7 @@ class UserAuthController extends Controller
         |--------------------------------------------------------------------------
         */
         $user_otp = random_int(100000, 999999);
+
         OTP::create([
             'user_id' => $user->id,
             'otp' => $user_otp,
@@ -59,9 +60,9 @@ class UserAuthController extends Controller
 
         try {
             $api_sendOTP = $termiApi->sendOTP($request->phonenumber, $user_otp);
-            dd($api_sendOTP);
+            // dd($api_sendOTP);
         } catch (\Exception $e) {
-            return back()->with('sorry', 'something went wrong, please try again');
+            return redirect(route('login_page'))->with('sorry', 'sorry unable to get your OTP at the moment');
         }
 
 
