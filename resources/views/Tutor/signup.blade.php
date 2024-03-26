@@ -17,7 +17,7 @@
 
     <!-- Jumbotron -->
     <div class="container py-4 ">
-        <div class="row g-0 justify-content-center">
+        <div class="row g-0 justify-content-center align-items-center">
             <div class="col-lg-4 mb-5 mb-lg-0 shadow-md">
                 <div class="card cascading-right" style="
             background: hsla(0, 0%, 100%, 0.55);
@@ -97,7 +97,7 @@
             </div>
 
             <div class="col-lg-6 mb-5 mb-lg-0">
-                <img src="{{ asset('3629604.jpg') }}" class="img-fluid rounded-top" alt="" />
+                <img src="{{ asset('assets/img/2.jpg') }}" class="img-fluid rounded-0" alt="" />
             </div>
         </div>
     </div>

@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="col-lg-6 mb-5 mb-lg-0">
-                <img src="{{ asset('3629604.jpg') }}" class="img-fluid rounded-top" alt="" />
+                <img src="{{ asset('assets/img/2.jpg') }}" class="img-fluid rounded-0" alt="" />
             </div>
         </div>
     </div>
