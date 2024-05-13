@@ -48,16 +48,18 @@ class TutorAuthController extends Controller
 
     public function uploadQualification(Request $request, $id)
     {
+
         $user = Tutor::find($id);
 
         $request->validate([
-            'tutor_id' => 'required | integer',
-            'degree' => 'required | string',
+            'tutor_id' => 'required|integer',
+            'degree' => 'required|string',
             'field_specialization' => 'string',
             'years_experience' => 'integer',
             'certification' => 'required|mimes:pdf,docx,jpeg|max:3072'
         ]);
 
+        dd($request->all());
 
         $certification_name = time() . '-' . $request->certification . '.' . $request->certification->extension();
 
@@ -71,7 +73,8 @@ class TutorAuthController extends Controller
             'certification' => $certification_name
         ]);
 
-        return view('Tutor.dashboard')->with('user', $user);
+        return redirect(route('tutor_dashboard'))->with('user', $user);;
+        // return view('Tutor.dashboard')->with('user', $user);
 
     }
 
