@@ -18,7 +18,9 @@ class TutorAuthController extends Controller
 
     public function addQualification()
     {
-        return view('Tutor.addQualification');
+        $tutor = Tutor::find(session('Tutor'));
+
+        return view('Tutor.addQualification')->with('tutor', $tutor);
     }
 
 
@@ -42,8 +44,9 @@ class TutorAuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        $request->session()->put('Tutor', $tutor->id);
 
-        return view('Tutor.addQualification')->with('tutor', $tutor);
+        return redirect(route('tutor_addQualification_page'))->with('tutor', $tutor);
     }
 
     public function uploadQualification(Request $request, $id)
@@ -73,7 +76,9 @@ class TutorAuthController extends Controller
             'certification' => $certification_name
         ]);
 
-        return redirect(route('tutor_dashboard'))->with('user', $user);;
+
+        return redirect(route('login_page'));
+
         // return view('Tutor.dashboard')->with('user', $user);
 
     }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('degree');
             $table->string('field_specialization')->nullable();
             $table->string('years_experience')->nullable();
-            $table->string('course_image');
+            $table->string('certification');
             $table->timestamps();
             $table->foreign('tutor_id')->references('id')->on('tutors')->onDelete('cascade');
         });

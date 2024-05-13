@@ -31,7 +31,8 @@
                             @csrf
                             @method('POST')
 
-                            <input type="number" hidden value="{{ $tutor->id }}" name="tutor_id" />
+                            <input type="number"  disabled hidden value="{{ $tutor->id }}" class="form-control" name="tutor_id" >
+
                             <div class="row">
                                 <div class="mb-3">
                                     <div class="form-outline">
