@@ -43,7 +43,7 @@ class TutorAuthController extends Controller
         ]);
 
 
-        return redirect()->route('tutor_addQualification_page')->with('tutor', $tutor);
+        return view('Tutor.addQualification')->with('tutor', $tutor);
     }
 
     public function uploadQualification(Request $request, $id)
@@ -61,7 +61,7 @@ class TutorAuthController extends Controller
 
         $certification_name = time() . '-' . $request->certification . '.' . $request->certification->extension();
 
-        $request->certification->move(public_path('course_img'), $certification_name);
+        $request->certification->move(public_path('certification'), $certification_name);
 
         $tutorinfo = TutorInfo::create([
             'tutor_id' => $id,
@@ -73,7 +73,6 @@ class TutorAuthController extends Controller
 
         return view('Tutor.dashboard')->with('user', $user);
 
-        dd($request->all());
     }
 
     public function logout()

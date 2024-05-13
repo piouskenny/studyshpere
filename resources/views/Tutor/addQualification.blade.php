@@ -30,6 +30,7 @@
                         <form action="{{ route('tutor_addQualification', $tutor->id) }}" method="post" enctype="multipart/form-data">
                             @method('POST')
                             @csrf
+                            <input type="number" value="{{ $tutor->id }}"  hidden name="id" />
                             <div class="row">
                                 <div class="mb-3">
                                     <div class="form-outline">
