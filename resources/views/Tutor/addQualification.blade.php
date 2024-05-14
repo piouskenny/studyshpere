@@ -26,64 +26,54 @@
                     <div class="p-5 shadow-5 text-center">
                         <h3 class="text-primary" style="font-weight: bold;">StudyPadi</h3>
 
-                        <h5 class="fw-bold mb-5">Tutor Sign up</h5>
-                        <form action="{{ route('tutor_sigup') }}" method="post">
+                        <h5 class="fw-bold mb-5">Qualification and Experience</h5>
+                        <form action="{{ route('tutor_sigup') }}" method="post" enctype="multipart/form-data">
                             @method('POST')
                             @csrf
                             <div class="row">
                                 <div class="mb-3">
                                     <div class="form-outline">
-                                        <input type="text" id="fullName" placeholder="Full Name" class="form-control" name="full_name" value="{{ @old('full_name') }}" />
+                                        <input type="text" id="degree" placeholder="Degree Qualification" class="form-control" name="degree" value="{{ @old('degree') }}" />
                                         <span class="text-danger d-block">
-                                            @error('full_name')
+                                            @error('degree')
                                             {{$message}}
                                             @enderror
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Email input -->
+
                             <div class="form-outline mb-3">
-                                <input type="text" class="form-control" placeholder="Username" name="username" value="{{ @old('username') }}" />
+                                <input type="text" id="field_specialization" placeholder="Field Of Specialization" class="form-control" name="field_specialization" value="{{ @old('field_specialization') }}" />
                                 <span class="text-danger d-block">
-                                    @error('username')
+                                    @error('field_specialization')
                                     {{$message}}
                                     @enderror
                                 </span>
                             </div>
 
+
                             <div class="form-outline mb-3">
-                                <input type="email" id="email" placeholder="email" name="email" class="form-control" value="{{ @old('email') }}" />
+                                <input type="number" class="form-control" min="0" placeholder="Years of Experience" name="years_experience" value="{{ @old('years_experience') }}" />
                                 <span class="text-danger d-block">
-                                    @error('email')
+                                    @error('years_experience')
                                     {{$message}}
                                     @enderror
                                 </span>
                             </div>
 
-                            <!-- Phone number input -->
-                            <div class="form-outline mb-3">
-                                <input type="tel" id="phonenumber" name="phonenumber" placeholder="Phone Number" class="form-control" value="{{ @old('phonenumber') }}" />
-                                <span class="text-danger d-block">
-                                    @error('phonenumber')
-                                    {{$message}}
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <label class="form-label text-bold" for="form6Example5">Certifiaiton</label>
+                                <input type="file" id="form6Example5" class="form-control-file" name="certification" />
+                                <span class="d-block text-danger">
+                                    @error('certification')
+                                    {{ $message }}
                                     @enderror
                                 </span>
                             </div>
-
-                            <!-- Password input -->
-                            <div class="form-outline mb-3">
-                                <input type="password" id="password" name="password" class="form-control"  placeholder="Password"/>
-                                <span class="text-danger d-block">
-                                    @error('password')
-                                    {{$message}}
-                                    @enderror
-                                </span>
-                            </div>
-
                             <!-- Submit button -->
-                            <button type="submit" class="btn btn-primary w-50 btn-block mb-3" id="submitBtn">
-                                Next
+                            <button type="submit" class="btn btn-primary w-100 btn-block mb-3" id="submitBtn">
+                                Sign up
                             </button>
 
                         </form>

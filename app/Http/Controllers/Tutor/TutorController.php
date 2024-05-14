@@ -92,7 +92,7 @@ class TutorController extends Controller
     public function createCourse()
     {
         $tutor = Tutor::where('id', '=', session('Tutor'))->first();
-        return view('Tutor.CreateCourse')->with('tutor', $tutor);
+        return view('Tutor.createCourse')->with('tutor', $tutor);
     }
 
 

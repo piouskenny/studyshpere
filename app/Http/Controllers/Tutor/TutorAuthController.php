@@ -15,6 +15,12 @@ class TutorAuthController extends Controller
         return view('Tutor.signup');
     }
 
+    public function addQualification()
+    {
+        return view('Tutor.addQualification');
+    }
+
+
 
     public function create(Request $request)
     {
@@ -35,11 +41,14 @@ class TutorAuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return view(
-            'Users.verify_otp',
-        )->with('user', $user);
+        return redirect()->route('tutor_addQualification_page');
+        // return view('Tutor.addQualification')->with('user', $user);
     }
 
+    public function uploadQualification(Request $request)
+    {
+        dd($request->all());
+    }
 
     public function logout()
     {
