@@ -111,7 +111,7 @@
 
                 <div class="col-lg-6 col-md-6">
                     <div class="footer-info">
-                        <h3>StudySphere</h3>
+                        <h3>StudyPadi</h3>
                     </div>
                 </div>
 

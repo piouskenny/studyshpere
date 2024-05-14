@@ -33,8 +33,7 @@
                             <div class="row">
                                 <div class="mb-4">
                                     <div class="form-outline">
-                                        <input type="text" id="fullName" class="form-control" name="full_name" value="{{ @old('full_name') }}" />
-                                        <label class="form-label" for="fullName">Full Name</label>
+                                        <input type="text" id="fullName" class="form-control" placeholder="Full Number" name="full_name" value="{{ @old('full_name') }}" />
                                         <span class="text-danger d-block">
                                             @error('full_name')
                                             {{$message}}
@@ -45,8 +44,7 @@
                             </div>
 
                             <div class="form-outline mb-4">
-                                <input type="email" id="email" name="email" class="form-control" value="{{ @old('email') }}" />
-                                <label class="form-label" for="email">Email address</label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{ @old('email') }}" />
                                 <span class="text-danger d-block">
                                     @error('email')
                                     {{$message}}
@@ -56,8 +54,7 @@
 
                             <!-- Phone number input -->
                             <div class="form-outline mb-4">
-                                <input type="tel" id="phonenumber" name="phonenumber" class="form-control" value="{{ @old('phonenumber') }}" />
-                                <label class="form-label" for="phonenumber">Phone Number</label>
+                                <input type="tel" id="phonenumber" name="phonenumber" placeholder="Phone Number" class="form-control" value="{{ @old('phonenumber') }}" />
                                 <span class="text-danger d-block">
                                     @error('phonenumber')
                                     {{$message}}
@@ -67,8 +64,7 @@
 
                             <!-- Password input -->
                             <div class="form-outline mb-4">
-                                <input type="password" id="password" name="password" class="form-control" />
-                                <label class="form-label" for="password">Password</label>
+                                <input type="password" id="password" name="password" placeholder="Password" class="form-control" />
                                 <span class="text-danger d-block">
                                     @error('password')
                                     {{$message}}

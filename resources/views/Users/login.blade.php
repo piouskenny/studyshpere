@@ -1,4 +1,4 @@
-@extends('Layout.app')
+    @extends('Layout.app')
 @section('content')
 <!-- Section: Design Block -->
 <section class="text-center text-lg-start ">
@@ -17,7 +17,7 @@
 
     <!-- Jumbotron -->
     <div class="container py-4 ">
-        <div class="row g-0 justify-content-center align-items-center">
+        <div class="row g-0 justify-content-center align-items-center mt-4 ">
             <div class="col-lg-4 shadow-sm mb-5 mb-lg-0">
                 <div class=" cascading-right" style="
             background: hsla(0, 0%, 100%, 0.55);
@@ -25,7 +25,7 @@
             ">
                     <div class=" p-5 shadow-sm text-center">
                         @include('components.alert')
-                        <h3 class="text-primary" style="font-weight: bold;">StudySphere</h3>
+                        <h3 class="text-primary" style="font-weight: bold;">StudyPadi</h3>
 
                         <h5 class="fw-bold mb-5">Login</h5>
                         <form method="post" action={{ route('login') }}>
@@ -33,8 +33,8 @@
                             @csrf
                             <!-- Phone input -->
                             <div class="form-outline mb-3">
-                                <input type="number" id="form3Example3" class="form-control" name="phonenumber" />
-                                <label class="form-label" for="form3Example3">Phone Number</label>
+                                <input type="number" id="form3Example3"  placeholder="Phone Number" class="form-control" name="phonenumber" />
+{{--                                <label class="form-label" for="form3Example3">Phone Number</label>--}}
                                 <span class="text-danger d-block">
                                     @error('phone_number')
                                     {{$message}}
@@ -44,8 +44,8 @@
 
                             <!-- Password input -->
                             <div class="form-outline mb-3">
-                                <input type="password" id="form3Example4" class="form-control" name="password" />
-                                <label class="form-label" for="form3Example4">Password</label>
+                                <input type="password" id="form3Example4"  placeholder="Password" class="form-control" name="password" />
+{{--                                <label class="form-label" for="form3Example4">Password</label>--}}
                                 <span class="text-danger d-block">
                                     @error('password')
                                     {{$message}}

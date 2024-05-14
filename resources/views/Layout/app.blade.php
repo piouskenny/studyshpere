@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>StudySphere</title>
+    <title>StudyPadi</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -37,14 +37,14 @@
         <div class="container d-flex align-items-center justify-content-between">
 
             <div class="logo">
-                <h1><a href="index.html"><span>StudySphere</span></a></h1>
+                <h1><a href="index.html"><span class="text-primary">StudyPadi</span></a></h1>
             </div>
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto {{ $_SERVER['REQUEST_URI'] == '/' ? 'active' : ''  }}" href="{{ route('home') }}">Home</a></li>
-                    <li><a class="nav-link scrollto {{ $_SERVER['REQUEST_URI'] == '/courses' ? 'active' : ''  }}" href="{{ route('courses') }}">Courses</a></li>
-                    <li><a class="nav-link scrollto  {{ $_SERVER['REQUEST_URI'] == '/login' ? 'active' : ''  }}"" href=" {{ route('login_page') }}">Dashboard</a></li>
+                    <li><a class="nav-link scrollto {{ $_SERVER['REQUEST_URI'] == '/' ? 'text-primary' : ''  }}" href="{{ route('home') }}">Home</a></li>
+                    <li><a class="nav-link scrollto {{ $_SERVER['REQUEST_URI'] == '/courses' ? 'text-primary' : ''  }}" href="{{ route('courses') }}">Courses</a></li>
+                    <li><a class="nav-link scrollto  {{ $_SERVER['REQUEST_URI'] == '/login' ? 'text-primary' : ''  }}" href=" {{ route('login_page') }}">Dashboard</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
