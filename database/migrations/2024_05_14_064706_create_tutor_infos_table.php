@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('tutor_infos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('tutor_id');
+            $table->string('degree');
+            $table->string('field_specialization')->nullable();
+            $table->string('years_experience')->nullable();
+            $table->string('course_image');
             $table->timestamps();
+            $table->foreign('tutor_id')->references('id')->on('tutors')->onDelete('cascade');
         });
     }
 

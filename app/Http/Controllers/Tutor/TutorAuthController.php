@@ -33,7 +33,7 @@ class TutorAuthController extends Controller
         ]);
 
 
-        $user = Tutor::create([
+        $tutor = Tutor::create([
             'full_name' => $request->full_name,
             'username' => $request->username,
             'email' => $request->email,
@@ -41,12 +41,17 @@ class TutorAuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('tutor_addQualification_page');
+
+        return redirect()->route('tutor_addQualification_page', $tutor->id);
         // return view('Tutor.addQualification')->with('user', $user);
     }
 
-    public function uploadQualification(Request $request)
+    public function uploadQualification(Request $request, $id)
     {
+        $tutor = Tutor::find($id);
+
+        $tutor;
+
         dd($request->all());
     }
 
