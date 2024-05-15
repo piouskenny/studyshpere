@@ -64,7 +64,7 @@ Route::post('/tutor_signup', [TutorAuthController::class, 'create'])->name('tuto
 //to add Qualifications
 Route::get('/tutor_addQualification', [TutorAuthController::class, 'addQualification'])->name('tutor_addQualification_page');
 Route::post('/tutor_addQualification/{id}', [TutorAuthController::class, 'create'])->name('tutor_addQualification');
-
+// Dashboard Endpoint
 Route::get('/tutor_dashboard', [TutorController::class, 'dashboard'])->name('tutor_dashboard')->middleware('tutor_auth');
 Route::get('/tutor_createCourse', [TutorController::class, 'createCourse'])->name('tutor_createCourse')->middleware('tutor_auth');
 Route::post('/tutor_storeCourse', [TutorController::class, 'storeCourse'])->name('tutor_storeCourse')->middleware('tutor_auth');
