@@ -43,7 +43,7 @@ class TutorAuthController extends Controller
         ]);
 
 
-        return redirect()->route('tutor_addQualification_page', $tutor->id);
+        return redirect()->route('tutor_addQualification_page')->with('tutor', $tutor);
     }
 
     public function uploadQualification(Request $request, $id)

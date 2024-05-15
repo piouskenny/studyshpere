@@ -27,7 +27,7 @@
                         <h3 class="text-primary" style="font-weight: bold;">StudyPadi</h3>
 
                         <h5 class="fw-bold mb-5">Qualification and Experience</h5>
-                        <form action="{{ route('tutor_sigup') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('tutor_addQualification', $tutor->id) }}" method="post" enctype="multipart/form-data">
                             @method('POST')
                             @csrf
                             <div class="row">
