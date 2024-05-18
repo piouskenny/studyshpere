@@ -27,11 +27,11 @@
                         <h3 class="text-primary" style="font-weight: bold;">StudyPadi</h3>
 
                         <h5 class="fw-bold mb-5">Qualification and Experience</h5>
-                        <form action="{{ route('tutor_addQualification', $tutor->id) }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('tutor_addQualification', $tutor->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
 
-                            <input type="number"  disabled hidden value="{{ $tutor->id }}" class="form-control" name="tutor_id" >
+                            <input type="number" hidden value="{{ $tutor->id }}" class="form-control" name="tutor_id" >
 
                             <div class="row">
                                 <div class="mb-3">
@@ -76,7 +76,7 @@
                             </div>
                             <!-- Submit button -->
                             <button type="submit" class="btn btn-primary w-100 btn-block mb-3" id="submitBtn">
-                                Sign up
+                                Submit
                             </button>
 
                         </form>

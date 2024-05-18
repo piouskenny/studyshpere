@@ -193,8 +193,10 @@ class TutorController extends Controller
      */
     public function feedbacks()
     {
-        $tutor = Tutor::where('id', '=', session('Tutor'))->first();
-        $feedbacks = Feedback::where('tutor_id', session('Tutor'))->paginate(5)->get();
+        $tutor = Tutor::find(session('Tutor'));
+
+        $feedbacks = Feedback::where('tutor_id', session('Tutor'))->paginate(5);
+
 
         return view(
             'Tutor.feedbacks',
