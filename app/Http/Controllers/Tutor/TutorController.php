@@ -32,7 +32,6 @@ class TutorController extends Controller
          * We need to return the amount of students that have completed the course
          */
 
-
         /**
          *  All students numbers
          */

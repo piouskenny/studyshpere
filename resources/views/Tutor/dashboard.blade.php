@@ -7,7 +7,7 @@
                 @include('components.alert')
             </div>
         </div>
-        <div class="row mb-5">
+        <div class="row mb-5 align-items-center" style="height: 44vh">
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-4 shadow-sm p-4 text-center card_mobile-space rounded rounded-md">
@@ -19,17 +19,12 @@
                         <h2>Student Enrolled</h2>
                         <h1>0</h1>
                     </div>
-
-                    <div class="col-md-4  shadow-sm p-4 text-center card_mobile-space rounded rounded-md bg-dark text-white mt-4">
-                        <h2>Average Grade</h2>
-                        <h1>0</h1>
-                    </div>
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6 align-items-center text-center justify-content-center m-auto">
                 <div class="col-md shadow-sm mt-md-0 mt-3">
-                    <div class="chart-container" style="position: relative; width:100%; height:400px;">
+                    <div class="chart-container" style="position: relative; width:100%; height:280px;">
                         <canvas id="pieChart"></canvas>
                     </div>
                 </div>
@@ -90,44 +85,39 @@
 <script>
     var ctx = document.getElementById('pieChart').getContext('2d');
     var myChart = new Chart(ctx, {
-        type: 'pie'
-        , data: {
-            labels: @json($data['labels'])
-            , datasets: [{
-                label: 'Data'
-                , data: @json($data['data'])
-                , backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)'
-                    , 'rgba(0, 0, 0, 0.2)'
-                    , 'rgba(255, 206, 86, 0.2)'
-                    // , 'rgba(75, 192, 192, 0.2)'
-                    // , 'rgba(153, 102, 255, 0.2)'
-                    // , 'rgba(255, 159, 64, 0.2)'
-                ]
-                , borderColor: [
-                    'rgba(255, 99, 132, 1)'
-                    , 'rgba(54, 162, 235, 1)'
-                    , 'rgba(255, 206, 86, 1)'
-                    // , 'rgba(75, 192, 192, 1)'
-                    // , 'rgba(153, 102, 255, 1)'
-                    // , 'rgba(255, 159, 64, 1)'
-                ]
-                , borderWidth: 1
+        type: 'pie',
+        data: {
+            labels: @json($data['labels']),
+            datasets: [{
+                label: 'Data',
+                data: @json($data['data']),
+                backgroundColor: [
+                    'rgba(0, 0, 0, 0.5)',  // Black
+                    'rgba(0, 0, 255, 0.5)', // Blue
+                    'rgba(128, 128, 128, 0.5)' // Gray
+                ],
+                borderColor: [
+                    'rgba(0, 0, 0, 1)', // Black
+                    'rgba(0, 0, 255, 1)', // Blue
+                    'rgba(128, 128, 128, 1)' // Gray
+                ],
+                borderWidth: 1
             }]
-        }
-        , options: {
-            responsive: true
-            , plugins: {
+        },
+        options: {
+            responsive: true,
+            plugins: {
                 legend: {
                     position: 'top'
-                , }
-                , title: {
-                    display: true
-                    , text: 'Pie Chart'
+                },
+                title: {
+                    display: true,
+                    text: 'Pie Chart'
                 }
             }
         }
     });
 
 </script>
+
 @endsection
