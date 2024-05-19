@@ -97,9 +97,21 @@ class AdminController extends Controller
 
         $certifcation_name = $tutorInfo->certification;
 
-        $file_path = public_path('books/' . $certifcation_name);
+        $file_path = public_path('certification/' . $certifcation_name);
 
         return Response::download($file_path, $certifcation_name . ".pdf", ['Content-Type: Document/pdf']);
+    }
+
+    public function verifyTutor($id)
+    {
+        $tutor = Tutor::find($id);
+
+        $tutor->update([
+            ' status' => true
+        ]);
+
+        return back()->with('success', "Tutor Has been verified");
+
     }
 
     public function save_tutor(Request $request)

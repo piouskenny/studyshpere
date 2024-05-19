@@ -15,6 +15,7 @@
                                 <form action="{{ route('admin_downloadCertificate', $tutor_info->id) }}" method="post">
                                     @csrf
                                     @method('post')
+
                                         <li class="mb-2 mb-xl-3 display-28"><span class="display-30  me-2 f">Certification:</span> </li>
                                         <button type="submit" class="tn btn-sm btn-primary"> Download </button>
                                 </form>
@@ -22,7 +23,7 @@
                             </ul>
 
 
-                            <div class="col">
+                            <div class="col mt-5">
                                 <form action="" method="post">
                                     @csrf
                                     @method('post')
@@ -31,7 +32,7 @@
                             </div>
 
 
-                            <div class="col d-block">
+                            <div class="col d-block mt-5">
                                 <form action=" {{ route('admin_delete_tutor',  $tutor->id   )}} " method="post">
                                     @csrf
                                     @method('post')
