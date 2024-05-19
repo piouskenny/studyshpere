@@ -9,6 +9,7 @@ use App\Models\Courses;
 use App\Models\Tutor;
 use App\Models\TutorInfo;
 use App\Models\User;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -77,10 +78,8 @@ class AdminController extends Controller
         $tutor_info = TutorInfo::where('tutor_id', $id)->first();
 
 
-        dd($tutor_info->field_specialization);
-
         return view(
-            'Admin.viewTutor',
+            'Admin.viewTutorInfo',
             [
                 'tutor' => $tutor,
                 'courses' => $courses,
@@ -90,6 +89,18 @@ class AdminController extends Controller
         )->with('admin', $admin);
     }
 
+
+    public function downloadCertificate($id)
+    {
+
+        $tutorInfo = TutorInfo::find($id)->first();
+
+        $certifcation_name = $tutorInfo->certification;
+
+        $file_path = public_path('books/' . $certifcation_name);
+
+        return Response::download($file_path, $certifcation_name . ".pdf", ['Content-Type: Document/pdf']);
+    }
 
     public function save_tutor(Request $request)
     {

@@ -94,6 +94,7 @@ Route::get('/admin/addTutor', [AdminController::class, 'add_tutor'])->name('admi
 Route::post('/admin/addTutor', [AdminController::class, 'save_tutor'])->name('admin_saveTutor')->middleware('admin_auth');
 Route::get('/admin/viewTutor/{id}', [AdminController::class, 'view_tutor'])->name('admin_view_tutor')->middleware('admin_auth');
 Route::get('/admin/viewTutorInfo/{id}', [AdminController::class, 'view_tutorInfo'])->name('admin_view_tutorId')->middleware('admin_auth');
+Route::post('/admin/downloadCertificate/{id}', [AdminController::class, 'downloadCertificate'])->name('admin_downloadCertificate')->middleware('admin_auth');
 Route::post('/admin/deleteTutor/{id}', [AdminController::class, 'delete_tutor'])->name('admin_delete_tutor')->middleware('admin_auth');
 Route::get('/admin/Single/{course_id}', [AdminController::class, 'singleCourse'])->name('admin_singleCourse')->middleware('admin_auth');
 Route::post('/admin/deleteCourse/{id}', [AdminController::class, 'delete_course'])->name('admin_delete_course')->middleware('admin_auth');
