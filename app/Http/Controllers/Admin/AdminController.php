@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\CourseContent;
 use App\Models\Courses;
 use App\Models\Tutor;
+use App\Models\TutorInfo;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -65,6 +66,27 @@ class AdminController extends Controller
                 'tutor' => $tutor,
                 'courses' => $courses,
             ]
+        )->with('admin', $admin);
+    }
+
+    public function view_tutorInfo($id)
+    {
+        $admin = Admin::find(session('Admin'))->first();
+        $tutor = Tutor::find($id)->first();
+        $courses = Courses::where('tutor_id', $id)->get();
+        $tutor_info = TutorInfo::where('tutor_id', $id)->first();
+
+
+        dd($tutor_info->field_specialization);
+
+        return view(
+            'Admin.viewTutor',
+            [
+                'tutor' => $tutor,
+                'courses' => $courses,
+                'tutor_info' => $tutor_info
+            ]
+
         )->with('admin', $admin);
     }
 

@@ -24,7 +24,7 @@
 
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
-                                        <button type="submit" class="btn btn-primary d-block">Verify Tutor</button>
+                                        <a href="{{ route('admin_view_tutorId', $tutor->id) }}" type="submit" class="btn btn-primary d-block">Verify Tutor</a>
                                     </div>
 
                                     <div class="col">

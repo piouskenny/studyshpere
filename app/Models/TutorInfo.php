@@ -15,5 +15,10 @@ class TutorInfo extends Model
         'certification'
     ];
 
+    public function tutor()
+    {
+        return $this->belongsTo(Tutor::class);
+    }
+
     use HasFactory;
 }
