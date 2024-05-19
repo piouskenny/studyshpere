@@ -134,20 +134,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-                            <i class="menu-icon mdi mdi-card-text-outline"></i>
-                            <span class="menu-title">Questions & Answers</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#tables" aria-expanded="false" aria-controls="tables">
-                            <i class="menu-icon mdi mdi-table"></i>
-                            <span class="menu-title">Settings</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}">
                             <i class="menu-icon mdi mdi-layers-outline"></i>
                             <span class="menu-title text-danger">Logout</span>

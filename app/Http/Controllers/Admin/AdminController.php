@@ -58,7 +58,7 @@ class AdminController extends Controller
     public function view_tutor($id)
     {
         $admin = Admin::find(session('Admin'))->first();
-        $tutor = Tutor::find($id)->first();
+        $tutor = Tutor::find($id);
         $courses = Courses::where('tutor_id', $id)->get();
 
         return view(
@@ -73,7 +73,7 @@ class AdminController extends Controller
     public function view_tutorInfo($id)
     {
         $admin = Admin::find(session('Admin'))->first();
-        $tutor = Tutor::find($id)->first();
+        $tutor = Tutor::find($id);
         $courses = Courses::where('tutor_id', $id)->get();
         $tutor_info = TutorInfo::where('tutor_id', $id)->first();
 
@@ -93,7 +93,7 @@ class AdminController extends Controller
     public function downloadCertificate($id)
     {
 
-        $tutorInfo = TutorInfo::find($id)->first();
+        $tutorInfo = TutorInfo::find($id);
 
         $certifcation_name = $tutorInfo->certification;
 
@@ -107,7 +107,7 @@ class AdminController extends Controller
         $tutor = Tutor::find($id);
 
         $tutor->update([
-            ' status' => true
+            'status' => true
         ]);
 
         return back()->with('success', "Tutor Has been verified");

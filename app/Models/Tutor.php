@@ -13,6 +13,7 @@ class Tutor extends Model
         'phonenumber',
         'profile_picture',
         'courses',
+        'status',
         'password'
     ];
 
