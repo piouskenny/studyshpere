@@ -18,9 +18,11 @@ return new class extends Migration
             $table->unsignedBigInteger('phonenumber');
             $table->string('profile_picture')->nullable();
             $table->bigInteger('courses')->nullable(); //courses owned in Number
+            $table->boolean('status')->default(false);
             $table->string('password');
             $table->timestamps();
         });
+
     }
 
     /**
