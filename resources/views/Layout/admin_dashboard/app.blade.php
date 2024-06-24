@@ -35,9 +35,9 @@
                     </button>
                 </div>
                 <div>
-                    <a class="navbar-brand brand-logo" href="index.html">
+                    <a class="navbar-brand brand-logo" href="{{ route('home') }}">
                         <!-- <img src="images/logo.svg" alt="logo" /> -->
-                        StudyShere Admin
+                        StudyPadi
                     </a>
                     <a class="navbar-brand brand-logo-mini" href="index.html">
                         Admin
@@ -47,7 +47,7 @@
             <div class="navbar-menu-wrapper d-flex align-items-top">
                 <ul class="navbar-nav">
                     <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                        <h1 class="welcome-text">Welcome, <span class="text-black fw-bold">{{ $admin->full_name }}</span></h1>
+                        <h1 class="welcome-text">Welcome, <span class="text-black fw-bold">Admin</span></h1>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
@@ -122,17 +122,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('profile') }}">
+                        <a class="nav-link" href="{{ route('admin_addTutor') }}">
                             <i class="menu-icon mdi mdi-account-circle-outline"></i>
-                            <span class="menu-title">Profile</span>
+                            <span class="menu-title">Add Tutor</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="" aria-expanded="false" aria-controls="charts">
-                            <i class="menu-icon mdi mdi-chart-line"></i>
-                            <span class="menu-title">Add Course</span>
-                        </a>
-                    </li>
+             
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}">
                             <i class="menu-icon mdi mdi-layers-outline"></i>

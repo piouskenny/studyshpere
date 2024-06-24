@@ -10,7 +10,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Providers\TermiProvider;
+use App\Services\ThirdPartyApi\Sendchampopt;
+
 
 class UserAuthController extends Controller
 {
@@ -56,15 +57,17 @@ class UserAuthController extends Controller
          * Send OTP to phoneumber
          */
 
-        $termiApi = new TermiProvider;
+        $sendchamp = new Sendchampopt;
 
         try {
-            $api_sendOTP = $termiApi->sendOTP($request->phonenumber, $user_otp);
+            $api_sendOTP = $sendchamp->sendopt($request->phonenumber, $user_otp);
 
             /**
              *The code here is supposed to return to the verify OTP Page
              */
-            return redirect(route('login_page'))->with('message', 'account created successfully');
+            return redirect(route('verify_otp_page'))->with('user', $user);
+
+          //  return redirect(route('login_page'))->with('message', 'account created successfully');
 
             // dd($api_sendOTP);
         } catch (\Exception $e) {
