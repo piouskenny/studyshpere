@@ -1,7 +1,7 @@
 @extends('Layout.app')
 @section('content')
 <!-- Section: Design Block -->
-<section class="text-center text-lg-start primary_bg ">
+<section class="text-center text-lg-start ">
     <style>
         .cascading-right {
             margin-right: -50px;

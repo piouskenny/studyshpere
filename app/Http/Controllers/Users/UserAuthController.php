@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Services\ThirdPartyApi\Sendchampopt;
-
+use App\Classes\EmailClass;
 
 class UserAuthController extends Controller
 {
@@ -54,30 +54,21 @@ class UserAuthController extends Controller
         ]);
 
         /**
-         * Send OTP to phoneumber
-         */
-
-        $sendchamp = new Sendchampopt;
-
+         * Send OTP to email
+        */
         try {
-            $api_sendOTP = $sendchamp->sendopt($request->phonenumber, $user_otp);
+            $emailClass = new EmailClass($user_otp, $user->email);
 
-            /**
-             *The code here is supposed to return to the verify OTP Page
-             */
             return redirect(route('verify_otp_page'))->with('user', $user);
 
-          //  return redirect(route('login_page'))->with('message', 'account created successfully');
-
-            // dd($api_sendOTP);
         } catch (\Exception $e) {
             return redirect(route('login_page'))->with('da', 'sorry unable to get your OTP at the moment');
         }
 
 
-        return view(
-            'Users.verify_otp',
-        )->with('user', $user);
+        //return view(
+            //'Users.verify_otp',
+       // )->with('user', $user);
     }
 
     public function login()
@@ -88,7 +79,9 @@ class UserAuthController extends Controller
 
     public function verify_otp_page()
     {
-        return view('Users.verify_otp');
+        $user = session('user');
+        
+        return view('Users.verify_otp')->with('user', $user);
     }
 
     public function verify_otp(Request $request)
@@ -102,20 +95,18 @@ class UserAuthController extends Controller
 
 
         if (!$user) {
-            return back()->with('danger', 'user not found');
+            return back()->with('failed', 'user not found');
         }
 
-        // check if user has been verified
-        if ($user->phone_verified == true) {
-            return back()->with('success', 'user phone number has already been verified');
-        }
 
         // check the opt that was sent to the database
-        $otp = OTP::where('user_id', $request->id);
+        $otp = OTP::where('user_id', $request->id)->first();
 
         if ($otp->otp != $request->otp) {
-            return back()->with('danger', 'Invalid OTP');
+            return back()->with('failed', 'Invalid OTP');
         }
+
+        $otp->delete();
 
         $request->session()->put('User', $user->id);
         return redirect(route('dashboard'))->with('user', $user);
