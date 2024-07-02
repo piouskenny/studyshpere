@@ -12,7 +12,6 @@
                 margin-right: 0;
             }
         }
-
     </style>
 
     <!-- Jumbotron -->
@@ -23,13 +22,21 @@
             background: hsla(0, 0%, 100%, 0.55);
             backdrop-filter: blur(30px);
             ">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="my-2 w-50">
+                            @include('components.alert')
+                        </div>
+                    </div>
+
                     <div class="card-body p-5 shadow-5 text-center">
                         <h2 class="fw-bold mb-5">Login</h2>
+
                         <form method="post" action="{{ route('verify_otp') }}">
                             @method('POST')
                             @csrf
 
-                            <input hidden id="form3Example4" name="id" class="form-control" value="{{ $user->id }}" />
+                            <!-- Ensure the user ID is available and passed to the form -->
+                            <input type="hidden" id="form3Example4" name="id" class="form-control" value="{{ $user->id ?? old('id') }}" />
 
                             <div class="form-outline mb-4">
                                 <input type="password" id="form3Example4" name="otp" class="form-control" />
@@ -46,6 +53,7 @@
                                 verify
                             </button>
                         </form>
+
                     </div>
                 </div>
             </div>

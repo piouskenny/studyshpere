@@ -12,7 +12,7 @@
         <div class="row mb-5">
             <div class="col-md-3 shadow-sm p-5 text-center card_mobile-space">
                 <h2>Enrolled Courses</h2>
-                <h1> {{ $courses_enrolled }}</h1>
+                <h1> {{ $courses_enrolled ?? 0}}</h1>
             </div>
 
             <div class="col-md-3 shadow-sm p-5 text-center  card_mobile-space">

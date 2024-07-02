@@ -1,15 +1,54 @@
 @extends('Layout.dashboard.app')
 @section('content')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<a href="https://api.whatsapp.com/send?phone={{$tutor->phonenumber}}&text=Merhaba" class="float" target="_blank">
-    <i class="fa fa-whatsapp wp-button"></i>
-    <p class="text-success h4 text-center my-2">Contact Tutor</p>
-</a>
+
+<!-- Custom CSS within the style tag -->
+<style>
+    .whatsapp-link {
+        display: inline-flex;
+        align-items: center;
+        background-color: #25D366; /* WhatsApp green */
+        color: white;
+       /* padding: 6px 12px; */
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        width: 140px;
+        height: 30px;
+        padding-bottom: 10px;
+    }
+
+    .whatsapp-link:hover {
+        background-color: #1DA955; /* Slightly darker green on hover */
+    }
+
+    .whatsapp-link .wp-button {
+        font-size: 20px; /* Adjust the size of the icon */
+        margin-right: 6px; /* Space between the icon and the text */
+    }
+
+    .whatsapp-link p {
+        margin: 0; /* Remove margin from the paragraph */
+        font-size: 12px; /* Adjust font size */
+        color: white; /* Text color */
+    }
+</style>
+
+
+
+
 <div class="main-panel">
     <div class="content-wrapper bg-light">
+
         <h1 class="h2">{{ $course->course_name }}</h1>
 
         <div class="row mb-5 p-5">
+            <!-- WhatsApp link -->
+<a href="https://api.whatsapp.com/send?phone={{ $tutor->phonenumber }}&text=Merhaba" class="float whatsapp-link align-items-center" target="_blank">
+    <i class="fa fa-whatsapp wp-button"></i>
+    <p class="pt-1">Contact Tutor</p>
+</a>
+
             <div class="col-md-8 shadow-sm">
                 @forelse($courseContent as $content)
                 <div>

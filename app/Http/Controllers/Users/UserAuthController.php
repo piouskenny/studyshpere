@@ -20,7 +20,6 @@ class UserAuthController extends Controller
         return view('Users.signup');
     }
 
-
     public function create(Request $request)
     {
         $request->validate([
@@ -30,8 +29,6 @@ class UserAuthController extends Controller
             'password' => 'required|string|min:8',
         ]);
 
-
-
         $user = User::create([
             'full_name' => $request->full_name,
             'username' => $request->username,
@@ -39,7 +36,6 @@ class UserAuthController extends Controller
             'phonenumber' => $request->phonenumber,
             'password' => Hash::make($request->password),
         ]);
-
 
         /*
         |--------------------------------------------------------------------------
@@ -64,12 +60,8 @@ class UserAuthController extends Controller
         } catch (\Exception $e) {
             return redirect(route('login_page'))->with('da', 'sorry unable to get your OTP at the moment');
         }
-
-
-        //return view(
-            //'Users.verify_otp',
-       // )->with('user', $user);
     }
+
 
     public function login()
     {
@@ -80,37 +72,46 @@ class UserAuthController extends Controller
     public function verify_otp_page()
     {
         $user = session('user');
-        
         return view('Users.verify_otp')->with('user', $user);
     }
 
+
     public function verify_otp(Request $request)
-    {
-        $request->validate([
-            'otp' => 'required|min:6|numeric'
-        ]);
+{
+    $request->validate([
+        'otp' => 'required|min:6|numeric',
+        'id' => 'required|integer'
+    ]);
 
+    $user = User::find($request->id);
 
-        $user = User::where('id', $request->id)->first();
-
-
-        if (!$user) {
-            return back()->with('failed', 'user not found');
-        }
-
-
-        // check the opt that was sent to the database
-        $otp = OTP::where('user_id', $request->id)->first();
-
-        if ($otp->otp != $request->otp) {
-            return back()->with('failed', 'Invalid OTP');
-        }
-
-        $otp->delete();
-
-        $request->session()->put('User', $user->id);
-        return redirect(route('dashboard'))->with('user', $user);
+    if (!$user) {
+        return back()->with('failed', 'User not found. Check your OTP and try again.')
+                     ->withInput($request->except('otp'));
     }
+
+    // Retrieve the OTP for the user
+    $otp = OTP::where('user_id', $request->id)->first();
+
+    // Check if the OTP matches
+    if (!$otp || $otp->otp != $request->otp) {
+        return back()->with('failed', 'Invalid OTP')
+                     ->withInput($request->except('otp'));
+    }
+
+    // Delete the OTP record
+    $otp->delete();
+
+    // Store the user ID in the session
+    $request->session()->put('User', $user->id);
+
+    // Redirect to the dashboard with a success message
+    return redirect(route('dashboard'))->with([
+        'user' => $user,
+        'success' => 'User OTP has been verified successfully',
+    ]);
+}
+
 
     public function check(Request $request)
     {
