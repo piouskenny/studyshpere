@@ -33,10 +33,10 @@
                             @csrf
                             <!-- Phone input -->
                             <div class="form-outline mb-3">
-                                <input type="number" id="form3Example3"  placeholder="Phone Number" class="form-control" name="phonenumber" />
+                                <input type="email" id="form3Example3"  placeholder="Email" class="form-control" name="email" />
 {{--                                <label class="form-label" for="form3Example3">Phone Number</label>--}}
                                 <span class="text-danger d-block">
-                                    @error('phone_number')
+                                    @error('email')
                                     {{$message}}
                                     @enderror
                                 </span>

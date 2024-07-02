@@ -117,14 +117,14 @@ class UserAuthController extends Controller
     {
         $request->validate(
             [
-                'phonenumber' => 'required|numeric|min:11',
+                'email' => 'required|email',
                 'password' => 'required'
             ]
         );
 
-        $updated_numnber = ltrim($request->phonenumber, '0');
+        //$updated_numnber = ltrim($request->phonenumber, '0');
 
-        $user = User::where('phonenumber', $updated_numnber)->first();
+        $user = User::where('email', $request->email)->first();
 
 
         if ($user) {
@@ -135,7 +135,7 @@ class UserAuthController extends Controller
                 return back()->with('failed', 'wrong Password');
             }
         } else {
-            $tutor = Tutor::where('phonenumber', $updated_numnber)->first();
+            $tutor = Tutor::where('email', $request->email)->first();
             if ($tutor) {
                 if (Hash::check($request->password, $tutor->password,)) {
                     $request->session()->put('Tutor', $tutor->id);
